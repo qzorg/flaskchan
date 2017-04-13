@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+	<head> <title>Add A User </title>
+		<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+	<title>Reports</title>
+	<style type="text/css">
+		.item{
+			padding-top: 5%;
+			padding-bottom: 5%;
+			margin-left: 10%;
+			margin-right: 10%;
+			padding-left: 5%;
+			border-style: solid;
+			background-color: #ffffff;
+		
+		}
+		.centeritem{
+			padding-right: 3%;
+			text-align: center;
+		}
+	</style>
+	
+   <body>
+   <center>
+      <h3>Add a User</h3></center>
+      <hr/>
+      
+      {%- for category, message in get_flashed_messages(with_categories = true) %}
+         <div class = "alert alert-danger">
+            {{ message }}
+         </div>
+      {%- endfor %}
+      <div class="item">
+      <form action = "{{ request.path }}" method = "post">
+         <label for = "name">Username</label><br>
+         <input type = "text" name = "name" placeholder = "Username" /><br>
+         <label for = "password1">Password</label><br>
+         <input type = "password" name = "password1" placeholder = "Password" /><br>
+         <label for = "password2">Password (again)</label><br>
+         <input type = "password" name = "password2" placeholder = "Password" /><br> <br />
+         <input type = "submit" value = "Submit" />
+      </form><br />
+	<div class="centeritem">
+	<a href="/mod"> Cancel </a></center>
+	</div>
+      </div>
+   </body>
+</html>

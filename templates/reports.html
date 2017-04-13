@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang = "en">
+   <head>
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+	<title>Reports</title>
+	
+   </head>
+   <body>
+	<center>
+      <h2>Reports</h2>
+	</center>
+      <hr/>
+      <div class="centeredreports">
+<center>
+      <table>
+         <thead>
+            <tr>
+               <th>Board</th>
+               <th>Report Date</th>
+               <th>Deleted?</th>
+               <th>ID</th>
+		<th>&nbsp</th>
+            </tr>
+         </thead>
+         
+         <tbody>
+            {% for report in reports %}
+               <tr>
+                  <td>{{ report.board }}</td>
+                  <td>{{ report.rdate }}</td>
+                  <td>{{ report.deleted }}</td>
+                  <td>{{ report.op_id }}</td>
+		  <td><a href="/{{report.board}}/{{report.op_id}}/admin"> Examine </a></td>
+               </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+</center>
+      </div>
+   </body>
+</html>
+
+

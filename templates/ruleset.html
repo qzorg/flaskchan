@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+	<head> <title>Edit Rules</title>
+		<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+	<title>Reports</title>
+	<style type="text/css">
+		.item{
+			padding-top: 5%;
+			padding-bottom: 5%;
+			margin-left: 10%;
+			margin-right: 10%;
+			padding-left: 5%;
+			border-style: solid;
+			background-color: #ffffff;
+		
+		}
+		.centeritem{
+			padding-right: 3%;
+			text-align: center;
+		}
+
+.rules{
+	   width: 90%;
+	display: table;
+}
+
+
+
+	</style>
+	
+   <body>
+   <center>
+      <h3>Edit Rules</h3></center>
+      <hr/>
+      
+      {%- for category, message in get_flashed_messages(with_categories = true) %}
+         <div class = "alert alert-danger">
+            {{ message }}
+         </div>
+      {%- endfor %}
+      <div class="item">
+      <form action = "{{ request.path }}" method = "post">
+         <label for = "rules">Rules:</label><br>
+         <textarea id="comment" name="rules" rows="8" style="margin-top: 0px; margin-bottom: 0px; height: 400px;">
+{% for rule in rules %}
+{{ rule.rules }}
+{% endfor %}</textarea>
+	
+        <br> <br />
+         <input type = "submit" value = "Submit" />
+      </form><br />
+	<div class="centeritem">
+	<a href="/mod"> Cancel </a></center>
+	</div>
+      </div>
+   </body>
+</html>
