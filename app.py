@@ -186,7 +186,7 @@ def addusers():
             else:
                 flash('Passwords must match')
     return render_template('adduser.html', css=css)
-   
+
 
 
 @app.route('/edrules', methods = ['GET', 'POST'])
@@ -206,35 +206,33 @@ def edrules():
 
 @app.route('/settings', methods = ['GET', 'POST'])
 def settings():
-	css = getcss()
-	csslist = getcsslist()
-	if request.method == 'POST':
-        	session['css'] = request.form['css']
-        	return redirect(redirect_url())
-    	return render_template('settings.html', css=css, csslist = csslist)
+    css = getcss()
+    csslist = getcsslist()
+    if request.method == 'POST':
+            session['css'] = request.form['css']
+            return redirect(redirect_url())
+    return render_template('settings.html', css=css, csslist = csslist)
 
 
 @app.route('/uploadcss', methods = ['GET', 'POST'])
 @requires_auth
 def uploadcss():
-	
-	    if request.method == 'POST':
-		# check if the post request has the file part
-		if 'file' not in request.files:
-		    flash('No file part')
-		    return redirect(request.url)
-		file = request.files['file']
+    if request.method == 'POST':
+        if 'file' not in request.files:
+            flash('No file part')
+            return redirect(request.url)
+        file = request.files['file']
 		# if user does not select file, browser also
 		# submit a empty part without filename
-		if file.filename == '':
-		    flash('No selected file')
-		    return redirect(request.url)
-		if file and allowed_file(file.filename):
-		    css = secure_filename(file.filename)
-		    setcss(css)
-		    file.save(os.path.join("static/", css))
-		    return redirect(redirect_url())
-	    return render_template('uploadcss.html', css=getcss())
+        if file.filename == '':
+            flash('No selected file')
+            return redirect(request.url)
+        if file and allowed_file(file.filename):
+            css = secure_filename(file.filename)
+            setcss(css)
+            file.save(os.path.join("static/", css))
+            return redirect(redirect_url())
+            return render_template('uploadcss.html', css=getcss())
 
 
 if __name__ == '__main__':

@@ -145,7 +145,7 @@ def add_report(rboard, rdate, rdeleted, rop):
 		)
 	db.session.add(newRep)
 	db.session.commit()
-                    
+
 def get_reports():
     return db.session.query(Reports).all()
 
@@ -176,18 +176,18 @@ def redirect_url(default='index'):
            url_for(default)
 
 def getcss():
-	if session['css']:
+	if ('css' in request.cookies):
 		css = session['css']
 		print css
 	else:
-		css = "style"
+		css = "style.css"
 	return css
-	
+
 def setcss(css):
 	edited = datetime.now()
 	newCss = Css(css=css, edited = edited)
 	db.session.add(newCss)
-	db.session.commit()	
+	db.session.commit()
 
 def getcsslist():
 	return db.session.query(Css).all()
