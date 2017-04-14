@@ -1,6 +1,6 @@
 # General Site
-* Bigger Thumbnails
-* Click for bigger image?
++ Bigger Thumbnails 
++ Click for bigger image?
 * Image dump - load every image on the site
 * Random image
 * Homepage stats - total posts, unique posters, active content

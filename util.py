@@ -2,12 +2,13 @@ from flask import request, flash, redirect, url_for
 from time import time
 from os.path import join
 from PIL import Image
-from models import Boards, Posts, Users, Reports, Rules
+from models import Boards, Posts, Users, Reports, Rules, Css
 from app import db
 from datetime import datetime
 from config import *
 from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy import desc
+from flask import session, redirect, url_for, escape, request
 
 
 def board_inexistent(name):
@@ -166,7 +167,27 @@ def setrules(rules):
 
 def getrules():
 	return db.session.query(Rules).all()
+
+
+
+def redirect_url(default='index'):
+    return request.args.get('next') or \
+           request.referrer or \
+           url_for(default)
+
+def getcss():
+	if session['css']:
+		css = session['css']
+		print css
+	else:
+		css = "style"
+	return css
 	
-	
-	
-	
+def setcss(css):
+	edited = datetime.now()
+	newCss = Css(css=css, edited = edited)
+	db.session.add(newCss)
+	db.session.commit()	
+
+def getcsslist():
+	return db.session.query(Css).all()

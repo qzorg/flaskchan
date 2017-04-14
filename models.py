@@ -39,4 +39,10 @@ class Rules(db.Model):
     id        = db.Column(db.Integer, primary_key = True, autoincrement=True)
     rules   = db.Column(db.String)
     edited  = db.Column(db.String)
+
+class Css(db.Model):
+    __tablename__ = 'css'
+    id        = db.Column(db.Integer, primary_key = True, autoincrement=True)
+    css   = db.Column(db.String)
+    edited  = db.Column(db.String)
    

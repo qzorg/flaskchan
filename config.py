@@ -10,4 +10,4 @@ BUMP_LIMIT         = 100
 BOARDS             = ['create','learn','media','meta', 'programming', 'tech', 'lewd']
 UPLOAD_FOLDER      = 'static/images/'
 THUMBS_FOLDER      = 'static/thumbs/'
-ALLOWED_EXTENSIONS =  set(['png','jpg','jpeg','gif'])
+ALLOWED_EXTENSIONS =  set(['png','jpg','jpeg','gif', 'css'])

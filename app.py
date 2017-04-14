@@ -6,6 +6,11 @@ from functools import wraps
 from flask import request, Response
 from flask.ext.bcrypt import Bcrypt
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask import session, redirect, url_for, escape, request
+from werkzeug.utils import secure_filename
+import os
+
+
 
 
 
@@ -30,19 +35,21 @@ db.session.commit()
 
 @app.route('/')
 def show_frontpage():
-    return render_template('home.html')
+    css = getcss()
+    return render_template('home.html', css=css)
 
 @app.route('/all/')
 def show_all():
     OPs = get_OPs_all()
     rules = getrules()
+    css = getcss()
     list = []
     for OP in OPs:
         replies = get_last_replies(OP.id)
         list.append(OP)
         list += replies[::-1]
 
-    return render_template('show_all.html', entries=list, board='all', rules=rules)
+    return render_template('show_all.html', entries=list, board='all', rules=rules, css = css)
 
 @app.route('/<board>/')
 def show_board(board):
@@ -50,6 +57,7 @@ def show_board(board):
         return redirect('/')
     OPs = get_OPs(board)
     list = []
+    css = getcss()
     for OP in OPs:
         replies = get_last_replies(OP.id)
         list.append(OP)
@@ -57,7 +65,7 @@ def show_board(board):
 
     sidebar = get_sidebar(board)
 
-    return render_template('show_board.html', entries=list, board=board, sidebar=sidebar, id=0)
+    return render_template('show_board.html', entries=list, board=board, sidebar=sidebar, id=0, css=css)
 
 @app.route('/<board>/catalog')
 def show_catalog(board):
@@ -71,8 +79,9 @@ def show_thread(board, id):
     OP      = get_thread_OP(id)
     replies = get_replies(id)
     sidebar = get_sidebar(board)
+    css = getcss()
 
-    return render_template('show_thread.html', entries=OP+replies, board=board, id=id, sidebar=sidebar)
+    return render_template('show_thread.html', entries=OP+replies, board=board, id=id, sidebar=sidebar, css=css)
 
 @app.route('/add', methods=['POST'])
 def new_thread():
@@ -131,8 +140,9 @@ def show_thread_admin(board, id):
     OP      = get_thread_OP(id)
     replies = get_replies(id)
     sidebar = get_sidebar(board)
+    css = getcss()
 
-    return render_template('show_thread_admin.html', entries=OP+replies, board=board, id=id, sidebar=sidebar)
+    return render_template('show_thread_admin.html', entries=OP+replies, board=board, id=id, sidebar=sidebar, css=css)
 
 
 @app.route('/report')
@@ -153,11 +163,13 @@ def showreports():
 @app.route('/mod')
 @requires_auth
 def showmod():
-	return render_template('mod.html')
+	css = getcss()
+	return render_template('mod.html', css=css)
 
 @app.route('/modadd', methods = ['GET', 'POST'])
 @requires_auth
 def addusers():
+    css=getcss()
     if request.method == 'POST':
         if not request.form['name'] or not request.form['password1'] or not request.form['password2']:
             flash('Please enter all the fields', 'error')
@@ -173,13 +185,14 @@ def addusers():
 
             else:
                 flash('Passwords must match')
-    return render_template('adduser.html')
+    return render_template('adduser.html', css=css)
    
 
 
 @app.route('/edrules', methods = ['GET', 'POST'])
 @requires_auth
 def edrules():
+    css = getcss()
     if request.method == 'POST':
         if not request.form['rules']:
             flash('Please enter all the fields', 'error')
@@ -189,7 +202,39 @@ def edrules():
             flash('Rules where successfully updated')
 
     rules = getrules()
-    return render_template('ruleset.html', rules = rules)
+    return render_template('ruleset.html', rules = rules, css=css)
+
+@app.route('/settings', methods = ['GET', 'POST'])
+def settings():
+	css = getcss()
+	csslist = getcsslist()
+	if request.method == 'POST':
+        	session['css'] = request.form['css']
+        	return redirect(redirect_url())
+    	return render_template('settings.html', css=css, csslist = csslist)
+
+
+@app.route('/uploadcss', methods = ['GET', 'POST'])
+@requires_auth
+def uploadcss():
+	
+	    if request.method == 'POST':
+		# check if the post request has the file part
+		if 'file' not in request.files:
+		    flash('No file part')
+		    return redirect(request.url)
+		file = request.files['file']
+		# if user does not select file, browser also
+		# submit a empty part without filename
+		if file.filename == '':
+		    flash('No selected file')
+		    return redirect(request.url)
+		if file and allowed_file(file.filename):
+		    css = secure_filename(file.filename)
+		    setcss(css)
+		    file.save(os.path.join("static/", css))
+		    return redirect(redirect_url())
+	    return render_template('uploadcss.html', css=getcss())
 
 
 if __name__ == '__main__':
