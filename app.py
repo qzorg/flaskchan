@@ -233,7 +233,7 @@ def uploadcss():
             setcss(css)
             file.save(os.path.join("static/", css))
             return redirect(redirect_url())
-            return render_template('uploadcss.html', css=getcss())
+    return render_template('uploadcss.html', css=getcss())
 
 
 if __name__ == '__main__':
