@@ -15,8 +15,8 @@ Imageboard Software written in Flask. Designed to have very little JS, and shoul
 
 1. apt-get install git apache2 libapache2-mod-wsgi libjpeg-dev zlib1g-dev python python-dev python-pip libffi-dev
 2. cd /var/www/ && git clone https://github.com/qzorg/devchan-engine.git
-3. copy the app.wsgi to your /var/www/devchan/
+3. copy the app.wsgi to your /var/www/devchan/.
 4. copy the devchan.conf file to your /etc/apache2/sites-enabled, and then make the appropraite changes.
-5. pip install -r requirements.txt
-6. Edit config.py to include direct paths to directories such as static/images/, static/thumbs, and the sqlite database
-6. service apache2 reload
+5. pip install -r requirements.txt.
+6. Edit config.py to include direct paths to directories such as static/images/, static/thumbs, and the sqlite database.
+6. service apache2 reload.
