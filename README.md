@@ -9,6 +9,7 @@ Imageboard Software written in Flask. Designed to have very little JS, and shoul
 2. pip install -r requirements.txt
 3. python app.py
 4. Default mod: (user / pass)
+
 ## Deploying on Apache wsgi
 
 TODO

@@ -208,9 +208,10 @@ def edrules():
 def settings():
     css = getcss()
     csslist = getcsslist()
+    lastpage = request.referrer
     if request.method == 'POST':
             session['css'] = request.form['css']
-            return redirect(redirect_url())
+            return redirect(lastpage)
     return render_template('settings.html', css=css, csslist = csslist)
 
 

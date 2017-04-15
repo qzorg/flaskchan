@@ -13,19 +13,19 @@
 			padding-left: 5%;
 			border-style: solid;
 			background-color: #ffffff;
-		
+
 		}
 		.centeritem{
 			padding-right: 3%;
 			text-align: center;
 		}
 	</style>
-	
+
    <body>
    <center>
       <h3>Change Settings</h3></center>
       <hr/>
-      
+
       {%- for category, message in get_flashed_messages(with_categories = true) %}
          <div class = "alert alert-danger">
             {{ message }}
@@ -47,6 +47,7 @@
     </div>
 <div class="centeritem">
     <button type="submit">Submit</button>
+		<p><a href="/"> Home </a></p>
 		</div>
   </div>
 </form>
@@ -57,7 +58,7 @@
 
 
 <br />
-	
+
       </div>
    </body>
 </html>
