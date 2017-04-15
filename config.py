@@ -1,6 +1,3 @@
-#test3
-
-
 DEBUG = True
 SECRET_KEY = 'secret'
 SQLALCHEMY_DATABASE_URI = 'sqlite:///posts.db'
