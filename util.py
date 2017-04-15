@@ -176,12 +176,12 @@ def redirect_url(default='index'):
            url_for(default)
 
 def getcss():
-	if ('css' in request.cookies):
+    if session.get('css') is not None:
 		css = session['css']
 		print css
-	else:
-		css = "style.css"
-	return css
+    else:
+        css = "style.css"
+    return css
 
 def setcss(css):
 	edited = datetime.now()
