@@ -108,19 +108,15 @@ def delete_image(id):
     db.session.commit()
 
 def check_auth(username, password):
-	if (db.session.query(Users).filter_by(username=username).all()):
-		usersce = db.session.query(Users).filter_by(username=username).first()
-		pw_hash = usersce.pw_hash
-		if (check_password_hash(pw_hash, password)):
-
-			print(pw_hash)
-			return True
-		else:
-
-			print(pw_hash)
-			return False
-	else:
-		return False
+    if (db.session.query(Users).filter_by(username=username).all()):
+        usersce = db.session.query(Users).filter_by(username=username).first()
+        pw_hash = usersce.pw_hash
+        if (check_password_hash(pw_hash, password)):
+            return True
+        else:
+            return False
+    else:
+        return False
 def report_post(op_id):
 	post = db.session.query(Posts).filter_by(id = op_id).first()
 	rboard = post.board
@@ -191,3 +187,16 @@ def setcss(css):
 
 def getcsslist():
 	return db.session.query(Css).all()
+def get_users():
+	return db.session.query(Users).all()
+def delete_user(killuser):
+    if (killuser == "1"):
+        flash('can\'t delete root user')
+    else:
+        db.session.query(Users).filter_by(id=killuser).delete()
+        db.session.commit()
+def change_password(username, password):
+    name=username
+    db.session.query(Users).filter_by(username=username).delete()
+    db.session.commit()
+    usercreate(name, password)

@@ -232,6 +232,40 @@ def uploadcss():
             file.save(os.path.join("static/", css))
             return redirect(redirect_url())
     return render_template('uploadcss.html', css=getcss())
+@app.route('/deluser', methods = ['GET', 'POST'])
+@requires_auth
+def delusers():
+    if request.method == 'POST':
+            killuser = request.form['user']
+            delete_user(killuser)
+            return redirect(request.referrer)
+    users = get_users()
+    return render_template('deluser.html', users = users, css = getcss())
+
+
+@app.route('/changepassword', methods = ['GET', 'POST'])
+@requires_auth
+def changepassword():
+    css=getcss()
+    if request.method == 'POST':
+        if not request.form['name'] or not request.form['password1'] or not request.form['password2'] or not request.form['oldpassword']:
+            flash('Please enter all the fields', 'error')
+        else:
+            oldpassword = request.form['oldpassword']
+            username = request.form['name']
+            password1 = request.form['password1']
+            password2 = request.form['password2']
+            if (password1 == password2):
+                password = password1
+
+                if check_auth(username, oldpassword):
+                    change_password(username, password)
+                    flash("Record successfully updated!")
+                else:
+                    flash("wrong username or password")
+            else:
+                flash('Passwords must match')
+    return render_template('changepassword.html', css=css)
 
 
 if __name__ == '__main__':

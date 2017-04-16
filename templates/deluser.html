@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang = "en">
+   <head>
+<link rel=stylesheet type=text/css href="/static/{{ css }}">
+	<title>Delete Users</title>
+<style type="text/css">
+label {
+
+}
+input.radio {width: auto;}
+		.item{
+			padding-top: 5%;
+			padding-bottom: 5%;
+			margin-left: 10%;
+			margin-right: 10%;
+			padding-left: 5%;
+			border-style: solid;
+			background-color: #ffffff;
+
+		}
+
+</style>
+   </head>
+   <body>
+	<center>
+      <h2>Delete Users</h2>
+	</center>
+      <hr/>
+<div class="item">
+  <form action="{{ url_for('delusers') }}" method="POST">
+    {%- for id in users %}
+
+    <p>  <input type="radio" name="user" class="radio" value="{{ id.id }}"/><label for="{{ id }}"> {{ id.username }} </label></p>
+
+    {% endfor %}
+  <button type="submit">Delete</button>
+
+</form>
+<br />
+<a href="/mod">Cancel</a>
+</div>
+   </body>
+</html>
