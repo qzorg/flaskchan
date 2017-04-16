@@ -7,16 +7,14 @@ from flask import request, Response
 from flask.ext.bcrypt import Bcrypt
 from werkzeug.security import generate_password_hash, check_password_hash
 
-
-
-
 app = Flask(__name__)
 Misaka(app=app, escape    = True,
                 no_images = True,
                 wrap      = True,
                 autolink  = True,
                 no_intra_emphasis = True,
-                space_headers     = True)
+                space_headers     = True,
+								fenced_code				= True)
 
 app.config.from_pyfile('config.py')
 
