@@ -317,7 +317,40 @@ div.item {
     border-radius: 3px;
 }
 
+<<<<<<< HEAD
 thead tr th {
     background: #333;
     border: none;
 }
+=======
+
+.lightbox {
+
+	display: none;
+
+
+	position: fixed;
+	z-index: 999;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	top: 0;
+	left: 0;
+	background: rgba(0,0,0,0.8);
+}
+
+.lightbox img {
+
+	max-width: 90%;
+	max-height: 80%;
+	margin-top: 2%;
+}
+
+.lightbox:target {
+
+	outline: none;
+
+
+	display: block;
+}
+>>>>>>> 3ba9e4bf1155c7a376d2a792d8c38fdc5a1130ec

@@ -3,10 +3,20 @@ Imageboard Software written in Flask. Designed to have very little JS, and shoul
 ## Creating a Dev Environment
 
 
-1. sudo apt-get install libjpeg-dev zlib1g-dev python python-dev python-pip
+1. Install the dependancies for your distro
+- sudo apt-get install libjpeg-dev zlib1g-dev python python-dev python-pip libtiff5-dev libjpeg62-turbo-dev zlib1g-dev libfreetype6-dev liblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python-tk
+
+- sudo yum install python python-devel python-pip libtiff-devel libjpeg-devel libzip-devel freetype-devel lcms2-devel libwebp-devel tcl-devel tk-devel
 2. pip install -r requirements.txt
 3. python app.py
+4. Default mod: (user / pass)
 
 ## Deploying on Apache wsgi
 
-TODO
+1. apt-get install git apache2 libapache2-mod-wsgi libjpeg-dev zlib1g-dev python python-dev python-pip libffi-dev
+2. cd /var/www/ && git clone https://github.com/qzorg/devchan-engine.git
+3. copy the app.wsgi to your /var/www/devchan/.
+4. copy the devchan.conf file to your /etc/apache2/sites-enabled, and then make the appropraite changes.
+5. pip install -r requirements.txt.
+6. Edit config.py to include direct paths to directories such as static/images/, static/thumbs, and the sqlite database.
+6. service apache2 reload.

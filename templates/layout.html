@@ -1,7 +1,7 @@
 <!doctype html>
 <title>/{{ board }}/</title>
-<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
-
+<!--<link rel=stylesheet type=text/css href="{{ url_for('static', filename= 'style.css') }}"> -->
+<link rel=stylesheet type=text/css href="/static/{{ css }}">
 {% block header %}
 <center>
 <div id='header'> [
@@ -10,6 +10,7 @@
 	<a href='/tech'>tech</a>
 	<a href='/programming'>programming</a>
 	<a href='/media'>media</a> ]
+	[<a href='/settings'>settings</a>]
 </div>
 {% endblock %}
 
