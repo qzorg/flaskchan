@@ -9,7 +9,8 @@ from config import *
 from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy import desc
 from flask import session, redirect, url_for, escape, request
-
+from PIL import ImageFile
+ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 def board_inexistent(name):
     if name not in BOARDS:
