@@ -75,7 +75,7 @@ blockquote {
 			padding-left: 5%;
 			border-style: solid;
 			background-color: #ffffff;
-		
+
 		}
 
 
@@ -138,4 +138,8 @@ blockquote {
 
 
 	display: block;
+}
+.sidebarfix{
+	position: fixed;
+  left: 70%;
 }
