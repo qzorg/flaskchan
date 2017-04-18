@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
 
-	<head> <title>Settings </title>
-<link rel=stylesheet type=text/css href="/static/{{ css }}">
+<head>
+	<title>Settings </title>
+	<link rel=stylesheet type=text/css href="/static/{{ css }}">
 	<title>Reports</title>
 	<style type="text/css">
-		.item{
+		.item {
 			padding-top: 5%;
 			padding-bottom: 5%;
 			margin-left: 10%;
@@ -13,52 +14,50 @@
 			padding-left: 5%;
 			border-style: solid;
 			background-color: #ffffff;
-
 		}
-		.centeritem{
+		
+		.centeritem {
 			padding-right: 3%;
 			text-align: center;
 		}
 	</style>
 
-   <body>
-   <center>
-      <h3>Change Settings</h3></center>
-      <hr/>
-
-      {%- for category, message in get_flashed_messages(with_categories = true) %}
-         <div class = "alert alert-danger">
-            {{ message }}
-         </div>
-      {%- endfor %}
-      <div class="item">
-
-
-
-      <form class="form-inline" method="POST" action="{{ url_for('settings') }}">
-  <div class="form-group">
-    <div class="input-group">
-        <span class="input-group-addon">CSS Style</span>
-            <select name="css" class="selectpicker form-control">
+	<body>
+		<center>
+			<h3>Change Settings</h3></center>
+		<hr/> {%- for category, message in get_flashed_messages(with_categories = true) %}
+		<div class="alert alert-danger">
+			{{ message }}
+		</div>
+		{%- endfor %}
+		<div class="item">
+			<b>Current CSS style:</b> {{css}}
+			<form class="form-inline" method="POST" action="{{ url_for('settings') }}">
+				<div class="form-group">
+					<div class="input-group">
+						<span class="input-group-addon">CSS Style</span>
+						<select name="css" class="selectpicker form-control">
             {% for id in csslist %}
               <option value="{{ id.css }}"> {{ id.css }}</option>
               {% endfor %}
             </select>
-    </div>
-<div class="centeritem">
-    <button type="submit">Submit</button>
-		<p><a href="/"> Home </a></p>
-		</div>
-  </div>
-</form>
+					</div>
+					<div class="centeritem">
+						<button type="submit">Submit</button>
+						<p><a href="/"> Home </a></p>
+					</div>
+				</div>
+			</form>
+			<i>If you have a stylesheet please feel free to share it as a <a href="https://gist.github.com/">gist</a> and it might be added to the site</i>
 
-<!-- {% for o in data %}
+
+			<!-- {% for o in data %}
               <option value="{{ o.name }}">{{ o.name }}</option>
               {% endfor %}-->
 
+			<br />
 
-<br />
+		</div>
+	</body>
 
-      </div>
-   </body>
 </html>
