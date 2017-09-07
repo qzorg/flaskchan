@@ -166,6 +166,7 @@ input, textarea, button {
 	border: 1px solid #f0a000;
 	margin: 10px 0;
 	padding: 10px;
+	background-color: #161616;
 }
 #wrap {
 	width: 1000px;
