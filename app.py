@@ -69,8 +69,8 @@ def show_board(board):
 def show_catalog(board):
     OPs = get_OPs_catalog(board)
     sidebar = get_sidebar(board)
-
-    return render_template('show_catalog.html', entries=OPs, board=board, sidebar=sidebar)
+    css=getcss()
+    return render_template('show_catalog.html', entries=OPs, board=board, sidebar=sidebar, css=css)
 
 @app.route('/<board>/<id>/')
 def show_thread(board, id):

@@ -160,3 +160,14 @@ input, textarea, button {
     background-color: #101010;
     border: 1px solid #f0a000;
 }
+
+.catalog {
+	display: inline-block;
+	border: 1px solid #f0a000;
+	margin: 10px 0;
+	padding: 10px;
+}
+#wrap {
+	width: 1000px;
+	margin: 50px auto;
+}
