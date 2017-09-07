@@ -121,12 +121,15 @@ hr {
 
 .threadbox {
 	border: 1px solid #f0a000;
+	margin: 10px 0;
 }
 
 /* - show_thread.html - */
 
 .thread, .post {
     padding: 20px;
+    margin: 5px;
+    background-color: #161616;
 }
 
 .thumb, .post_body {
