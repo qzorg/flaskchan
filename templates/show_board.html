@@ -4,17 +4,21 @@
 
 <div id=left>
 {% for entry in entries %}
+
+
+
+
 {% if entry.op_id %}
+
 <div class=post>
+
 {% else %}
+</div>
+<hr>
+<div class=threadbox>
 <div class=thread>
 {% endif %}
-	{% if entry.fname %}
-		<a href="#_" class="lightbox" id="img{{ entry.id }}"><img src="/static/images/{{ entry.fname }}"></a>
-		<a href="#img{{ entry.id }}"> <img class=thumb src=/static/thumbs/{{ entry.fname }}></a>
-	{% endif %}
-	<div class='post_body' id='{{ entry.id }}'>
-	    <div class='byline'>
+	<div class='byline'>
 		<span>{{ entry.subject }}</span>
 		<span>
 			{% if entry.email %}
@@ -29,10 +33,29 @@
 		{% else %}
 			<a href='#{{ entry.id }}' onclick="cite({{ entry.id }})">#{{ entry.id }}</a>
 		{% endif %}
-	    </div>
-	    {{ entry.text|markdown }}
+	</div>
+	<div class='post_body' id='{{ entry.id }}'>
+		{% if entry.fname %}
+		<a href="#_" class="lightbox" id="img{{ entry.id }}"><img src="/static/images/{{ entry.fname }}"></a>
+		<a href="#img{{ entry.id }}"> <img class=thumb src=/static/thumbs/{{ entry.fname }}></a>
+		</a>
+		{% endif %}
+		{{ entry.text|markdown }}
 	</div>
 </div>
+
+
+{% if entry.op_id %}
+
+
+{% else %}
+
+{% endif %}
+
+
+
+
+
 {% endfor %}
 </div>
 <div class="sidebarfix">
@@ -40,3 +63,4 @@
 </div>
 </div>
 {% endblock %}
+
