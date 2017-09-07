@@ -117,6 +117,12 @@ hr {
 	display: block;
 }
 
+/* - show_board.html, show_all.html - */
+
+.threadbox {
+	border: 1px solid #f0a000;
+}
+
 /* - show_thread.html - */
 
 .thread, .post {
