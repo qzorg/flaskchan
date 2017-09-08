@@ -10,7 +10,7 @@
 * Theme changer from git repository
 * Logo/Favicon
 * Multi-File posts
-
+* Threads/posts must be aligned left to make room for the post/reply box on smaller screens
 
 # Other Things
 * Random thread
