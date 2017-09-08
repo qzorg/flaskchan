@@ -9,6 +9,7 @@
 * Pagination/Ajax load
 * Theme changer from git repository
 * Logo/Favicon
+* Multi-File posts
 
 
 # Other Things
@@ -18,6 +19,9 @@
 * IRC
 * Board logos?
 * Board-specific themes?
+* Static Footer for homepage and boards
+* Headers for boards - board rules, topic, and board name in bold
+* anchored floating catalog button
 
 # Mod Tools
 * List of deleted threads
