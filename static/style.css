@@ -195,3 +195,14 @@ input, textarea, button {
 .fieldpadding{
 	padding-top: 7px;
 }
+.sidebar{
+    border: 1px solid #f0a000;
+    background-color: #161616;
+    padding: 10px;
+    position: fixed;
+    top: 10%;
+    left: 77%; 
+    right: 5%;
+    
+}
+
