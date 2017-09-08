@@ -6,9 +6,9 @@
 		<input type="hidden" name="board" value="{{ board }}">
 		<input type="hidden" name="op_id" value="{{ id }}">
 		<input type=text name=name placeholder=Name>
-		<input type=text name=email placeholder=Email>
-		<input type=text name=subject placeholder=Subject>
-		<textarea id=comment name=post_content rows=8 placeholder="Post (Markdown)" style='width: 90%'></textarea>
+		<div id=fieldpadding><input type=text name=email placeholder=Email></div>
+		<div id=fieldpadding><input type=text name=subject placeholder=Subject></div>
+		<textarea id=comment name=post_content rows=8 placeholder="Post (Markdown)" style='width: 98%'></textarea>
 		<input type=file name=file>
 		<input type=submit value=Post style='width: 100%'>
 	</form>

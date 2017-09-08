@@ -6,10 +6,11 @@
 		<input type="hidden" name="board" value="{{ board }}">
 		<input type="hidden" name="op_id" value="{{ id }}">
 		<input type=text name=name placeholder=Name>
-		<input type=text name=email placeholder=Email>
+		<div class=fieldpadding><input type=text name=email placeholder=Email></div>
 
 		<input type=text name=subject placeholder=Subject style="display: none;">
-		<textarea id=comment name=post_content rows=8 placeholder="Comment (Markdown)" style='width: 90%'></textarea>
+		<br/>
+		<textarea id=comment name=post_content rows=8 placeholder="Comment (Markdown)" style='width: 98%;'></textarea>
 
 		<input type=file name=file>
 		<input type=submit value=Reply style='width: 90%'>

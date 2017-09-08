@@ -31,7 +31,7 @@ a:hover {
 #right {
 
 	width: 100px;
-	height:600px;
+	height:273px;
 
 	background: #161616;
 	border-radius: 2px;
@@ -192,4 +192,7 @@ input, textarea, button {
 	left: 80%;
 	right:10%
 	overflow-y: auto;
+}
+.fieldpadding{
+	padding-top: 7px;
 }
