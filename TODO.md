@@ -22,6 +22,7 @@
 * Static Footer for homepage and boards
 * Headers for boards - board rules, topic, and board name in bold
 * anchored floating catalog button
+* Color posts' and replies' subjects, dates, and usernames seperately
 
 # Mod Tools
 * List of deleted threads
