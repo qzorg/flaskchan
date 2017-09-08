@@ -7,11 +7,16 @@
 {% if entry.op_id %}
 <div class=post>
 {% else %}
-<hr>
+
 <div class=thread>
 {% endif %}
+	    {% if entry.fname %}
+    <a href="#_" class="lightbox" id="img{{ entry.id }}"><img src="/static/images/{{ entry.fname }}"></a>
+    <a href="#img{{ entry.id }}"> <img class=thumb src=/static/thumbs/{{ entry.fname }}></a>
+    {% endif %}
+    <div class='post_body' id='{{ entry.id }}'>
 	<div class='byline'>
-		<span>{{ entry.subject }}</span>
+	    <span>{{ entry.subject }}</span>
 		<span>
 			{% if entry.email %}
 			<a href="mailto:{{ entry.email }}">{{ entry.name }}</a>
@@ -20,17 +25,13 @@
 			{% endif %}
 		</span>
 		<span>{{ entry.date }}</span>
-		<a href='#{{ entry.id }}' onclick="cite({{ entry.id }})">#{{ entry.id }}</a>
-		<a href="{{ url_for('delete') }}?id={{entry.id}}&board={{board}}&thread={{entry.op_id}}">delete</a>
+		
+			<a href='#{{ entry.id }}' onclick="cite({{ entry.id }})">#{{ entry.id }}</a>
+					<a href="{{ url_for('delete') }}?id={{entry.id}}&board={{board}}&thread={{entry.op_id}}">delete</a>
+
 	</div>
-	<div class='post_body' id='{{ entry.id }}'>
-		{% if entry.fname %}
-		<a href="#_" class="lightbox" id="img{{ entry.id }}"><img src="/static/images/{{ entry.fname }}"></a>
-		<a href="#img{{ entry.id }}"> <img class=thumb src=/static/thumbs/{{ entry.fname }}></a>
-		</a>
-		{% endif %}
-		{{ entry.text|markdown }}
-	</div>
+	{{ entry.text|markdown }}
+    </div>
 </div>
 {% endfor %}
 </div>

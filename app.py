@@ -149,7 +149,9 @@ def report():
 	report_post(post_id)
 	board   = request.args.get('board')
 	thread  = request.args.get('thread')
-	return redirect('/' + board + '/' + thread)
+	flash('reported')
+	return redirect(request.referrer)
+	
 
 @app.route('/reports')
 @requires_auth
