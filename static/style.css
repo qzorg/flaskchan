@@ -28,6 +28,20 @@ a:hover {
     text-decoration: none;
     border-bottom: 1px solid #be5500;
 }
+#right {
+
+	width: 100px;
+	height:600px;
+
+	background: #161616;
+	border-radius: 2px;
+	display: table;
+	padding-left: 10px;
+	padding-right: 10px;
+
+	margin: 10px;
+	border: 1px solid #f0a000;
+}
 
 #header {
     background-color: #101010;
@@ -171,4 +185,11 @@ input, textarea, button {
 #wrap {
 	width: 1000px;
 	margin: 50px auto;
+}
+.sidebarfix{
+	position: fixed;
+	top: 10%;
+	left: 80%;
+	right:10%
+	overflow-y: auto;
 }
