@@ -29,16 +29,14 @@ a:hover {
     border-bottom: 1px solid #be5500;
 }
 #right {
-
 	width: 100px;
 	height:273px;
-
 	background: #161616;
 	border-radius: 2px;
 	display: table;
 	padding-left: 10px;
 	padding-right: 10px;
-
+	padding-bottom: 10px;
 	margin: 10px;
 	border: 1px solid #f0a000;
 }
@@ -173,6 +171,7 @@ input, textarea, button {
     color: #f0a000;
     background-color: #101010;
     border: 1px solid #f0a000;
+    margin: 5px;
 }
 
 .catalog {
