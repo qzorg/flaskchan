@@ -157,6 +157,10 @@ hr {
     text-align: left;
 }
 
+.thread, .post_body p {
+    line-height: 120%;
+}
+
 blockquote {
     border-left: 1px solid white;
     padding: 10px;
