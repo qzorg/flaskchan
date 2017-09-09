@@ -22,6 +22,12 @@
 	    Total Images: {{ total_images }}<br />
 	</div>
     </div>
+    <h2> Recent Posts </h2>
+    {% for entry in recent_posts %}
+	<div id="post">
+	    {% include("thread_partial.html") %}
+	</div>
+    {% endfor %}
 
 </body>
 {% endblock %}

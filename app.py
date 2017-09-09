@@ -34,13 +34,13 @@ db.session.commit()
 @app.route('/')
 def show_frontpage():
     css = getcss()
-    from sqlalchemy import func
     total_posts = sql_get_one(db.engine.execute("SELECT COUNT(*) FROM " + Posts.__tablename__))
     total_ops = sql_get_one(db.engine.execute("SELECT COUNT(*) FROM " + Posts.__tablename__ + " WHERE op_id = 0"))
     images = sql_get_one(db.engine.execute("SELECT COUNT(*) FROM " + Posts.__tablename__ + " WHERE fname IS NOT NULL AND fname != ''"))
     boards = db.engine.execute("SELECT name, long_name FROM " + Boards.__tablename__)
+    recent_posts = Posts.query.order_by(Posts.date).limit(3).all()
     # Can't get unique posters, we don't record IP addresses
-    return render_template('home.html', css=css, total_posts = total_posts, total_ops = total_ops, images = images, boards = boards)
+    return render_template('home.html', css=css, total_posts = total_posts, total_ops = total_ops, images = images, boards = boards, recent_posts = recent_posts, render_template = render_template)
 
 @app.route('/all/')
 def show_all():
@@ -85,7 +85,7 @@ def show_thread(board, id):
     sidebar = get_sidebar(board)
     css = getcss()
 
-    return render_template('show_thread.html', entries=OP+replies, board=board, id=id, sidebar=sidebar, css=css)
+    return render_template('show_thread.html', entries=OP+replies, board=board, id=id, sidebar=sidebar, css=css, render_template = render_template)
 
 @app.route('/add', methods=['POST'])
 def new_thread():
