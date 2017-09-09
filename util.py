@@ -201,3 +201,6 @@ def change_password(username, password):
     db.session.query(Users).filter_by(username=username).delete()
     db.session.commit()
     usercreate(name, password)
+
+def sql_get_one(x):
+    for r in x: return r[0]
