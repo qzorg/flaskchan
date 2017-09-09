@@ -1,5 +1,11 @@
 {% extends "layout.html" %}
 {% block body %}
+<nav id="nav" name="nav">
+<div class="sidebarfix sidebarbuttonOFF">
+<a href="#buttonON">CLOSE</a>
+{% include 'sidebar.html' %}
+</div>
+</nav>
 <div id=wrap>
 <div name="buttonON"><a href="#nav">POST</a> </div>
 <div id=left>
@@ -44,12 +50,6 @@
 
 {% endfor %}
 </div>
-<nav id="nav" name="nav">
-<div class="sidebarfix sidebarbuttonOFF">
-<a href="#buttonON">CLOSE</a>
-{% include 'sidebar.html' %}
-</div>
-</nav>
 </div>
 {% endblock %}
 
