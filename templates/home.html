@@ -10,12 +10,24 @@
     <div class="content_block">
 	<h2> WELCOME </h2>
 	<div class="left_box">
-	    < boards >
+	    &lt; boards &gt;<br />
+	    {% for x in boards %}
+	    <a href="{{ x[0] }}">/{{ x[0] }}/</a><br />
+	    {% endfor %}
 	</div>
 	<div class="right_box">
-	    < active content statistics >
+	    &lt; active content statistics &gt;<br />
+	    Total posts and replies: {{ total_posts }}<br />
+	    Total OPs: {{ total_ops }}<br />
+	    Total Images: {{ total_images }}<br />
 	</div>
     </div>
+    <h2> Recent Posts </h2>
+    {% for entry in recent_posts %}
+	<div id="post">
+	    {% include("thread_partial.html") %}
+	</div>
+    {% endfor %}
 
 </body>
 {% endblock %}
