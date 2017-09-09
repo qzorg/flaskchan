@@ -1,7 +1,8 @@
 # General Site
 * Image dump - load every image on the site
 * Random image
-* Homepage stats - total posts, unique posters, active content
+* Homepage stats - unique posts - can't do it yet because we don't record IPs
+* Put the boards in the `Boards` table
 * Homepage recent images/threads?
 * WebM player
 * Random header image

@@ -37,8 +37,10 @@ def show_frontpage():
     from sqlalchemy import func
     total_posts = sql_get_one(db.engine.execute("SELECT COUNT(*) FROM " + Posts.__tablename__))
     total_ops = sql_get_one(db.engine.execute("SELECT COUNT(*) FROM " + Posts.__tablename__ + " WHERE op_id = 0"))
+    images = sql_get_one(db.engine.execute("SELECT COUNT(*) FROM " + Posts.__tablename__ + " WHERE fname IS NOT NULL AND fname != ''"))
+    boards = db.engine.execute("SELECT name, long_name FROM " + Boards.__tablename__)
     # Can't get unique posters, we don't record IP addresses
-    return render_template('home.html', css=css, total_posts = total_posts, total_ops = total_ops)
+    return render_template('home.html', css=css, total_posts = total_posts, total_ops = total_ops, images = images, boards = boards)
 
 @app.route('/all/')
 def show_all():
