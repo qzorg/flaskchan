@@ -197,7 +197,7 @@ input, textarea, button {
 	position: fixed;
 	top: 10%;
 	left: 80%;
-	right:10%;
+	right: auto;
 	overflow-y: auto;
 }
 .fieldpadding{
