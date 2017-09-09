@@ -23,7 +23,7 @@ a {
     transition: color 0.3s;
 }
 
-code {
+pre code {
     font-size: 0.9em;
     font-family: monospace;
     text-decoration: none;
@@ -162,6 +162,7 @@ blockquote {
     padding: 10px;
     margin: 0;
     color: white;
+    line-height: 170%;
 }
 
 blockquote p {
