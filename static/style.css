@@ -23,6 +23,13 @@ a {
     transition: color 0.3s;
 }
 
+code {
+    font-size: 0.9em;
+    font-family: monospace;
+    text-decoration: none;
+    color: white;
+}
+
 a:hover {
     color: #f0a000;
     text-decoration: none;
