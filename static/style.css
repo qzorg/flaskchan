@@ -204,6 +204,23 @@ input, textarea, button {
 	right: auto;
 	overflow-y: auto;
 }
+
+.sidebarbuttonON {
+    z-index: 1000;
+}
+
+.sidebarbuttonOFF {
+    z-index: 1001;
+}
+
+nav {
+    display: none;
+}
+
+nav:target {
+    display: block !important;
+}
+
 .fieldpadding{
 	padding-top: 7px;
 }
