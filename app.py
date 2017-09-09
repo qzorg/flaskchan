@@ -38,7 +38,7 @@ def show_frontpage():
     total_ops = sql_get_one(db.engine.execute("SELECT COUNT(*) FROM " + Posts.__tablename__ + " WHERE op_id = 0"))
     images = sql_get_one(db.engine.execute("SELECT COUNT(*) FROM " + Posts.__tablename__ + " WHERE fname IS NOT NULL AND fname != ''"))
     boards = db.engine.execute("SELECT name, long_name FROM " + Boards.__tablename__)
-    recent_posts = Posts.query.order_by(Posts.date).limit(3).all()
+    recent_posts = Posts.query.order_by(Posts.date.desc()).limit(3).all()
     # Can't get unique posters, we don't record IP addresses
     return render_template('home.html', css=css, total_posts = total_posts, total_ops = total_ops, images = images, boards = boards, recent_posts = recent_posts, render_template = render_template)
 
