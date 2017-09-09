@@ -1,7 +1,13 @@
 {% extends "layout.html" %}
 {% block body %}
+<nav id="nav" name="nav">
+<div class="sidebarfix sidebarbuttonOFF">
+<a href ="#buttonON">CLOSE</a>
+{% include 'sidebar_reply.html' %}
+</div>
+</nav>
 <div id=wrap>
-
+<div name="buttonON"><a href="#nav">REPLY</a></div>
 <div id=left>
 {% for entry in entries %}
 {% if entry.op_id %}
@@ -13,9 +19,6 @@
 {% include("thread_partial.html") %}
 
 {% endfor %}
-</div>
-<div class="sidebarfix">
-{% include 'sidebar_reply.html' %}
 </div>
 </div>
 {% endblock %}
