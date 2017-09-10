@@ -8,7 +8,7 @@ from flask.ext.bcrypt import Bcrypt
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask import session, redirect, url_for, escape, request
 from werkzeug.utils import secure_filename
-import os
+import os, json
 
 
 
@@ -40,7 +40,7 @@ def show_frontpage():
     boards = db.engine.execute("SELECT name, long_name FROM " + Boards.__tablename__)
     recent_posts = Posts.query.order_by(Posts.date.desc()).limit(3).all()
     # Can't get unique posters, we don't record IP addresses
-    return render_template('home.html', css=css, total_posts = total_posts, total_ops = total_ops, images = images, boards = boards, recent_posts = recent_posts, render_template = render_template)
+    return render_template('home.html', css=css, total_posts = total_posts, total_ops = total_ops, images = images, boards = boards, recent_posts = recent_posts, render_template = render_template, json = json)
 
 @app.route('/all/')
 def show_all():
@@ -85,7 +85,7 @@ def show_thread(board, id):
     sidebar = get_sidebar(board)
     css = getcss()
 
-    return render_template('show_thread.html', entries=OP+replies, board=board, id=id, sidebar=sidebar, css=css, render_template = render_template)
+    return render_template('show_thread.html', entries=OP+replies, board=board, id=id, sidebar=sidebar, css=css, render_template = render_template, json = json)
 
 @app.route('/add', methods=['POST'])
 def new_thread():

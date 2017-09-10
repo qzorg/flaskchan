@@ -27,7 +27,14 @@
 {% endblock %}
 
 <script>
-function cite(id) {
+function cite(id, op_id, board) {
+	if (document.getElementById("comment") == null) {
+		if (op_id == 0) {
+			window.location.href = "/" + board + "/" + id + "/#nav"
+		} else {
+			window.location.href = "/" + board + "/" + op_id + "/#nav"
+		}
+	}
 	document.getElementById('comment').value+="[@" + id + "](#" + id + ")\n";
 	reply = true;
 	window.location.href = "#nav";
