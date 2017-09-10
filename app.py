@@ -72,7 +72,11 @@ def show_board(board):
 
     sidebar = get_sidebar(board)
     coalesce = lambda x: x.id if x.op_id == 0 else x.op_id
-    list[0].new_thread = False
+    try:
+        if list[0]:
+            list[0].new_thread = False
+    except:
+        pass
     for i in range(len(list) - 1):
         if coalesce(list[i]) != coalesce(list[i + 1]):
             list[i + 1].new_thread = True
