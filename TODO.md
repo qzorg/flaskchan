@@ -10,12 +10,11 @@
 * Logo/Favicon
 * Multi-File posts
 * Threads/posts must be aligned left to make room for the post/reply box on smaller screens
+* Recent posts on home page need to be in boxes
 
 # Other Things
 * Random thread
-* Popular threads
 * Activity log (of the entire history of the site)
-* IRC
 * Board logos?
 * Board-specific themes?
 * Static Footer for homepage and boards
