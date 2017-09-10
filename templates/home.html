@@ -23,7 +23,7 @@
 	    <br />
 	    &lt; popular threads &gt;<br />
 	    {% for entry in popular_threads %}
-		<a href="/{{ entry.board }}/{{ entry.id }}">{{entry.text}}</a><br />
+		<a href="/{{ entry.board }}/{{ entry.id }}">{{truncate(re.sub("<[^<]+?>", "",entry.text | markdown))}}</a><br />
 	    {% endfor %}
 	</div>
     </div>
