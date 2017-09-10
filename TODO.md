@@ -2,12 +2,11 @@
 * Image dump - load every image on the site
 * Random image
 * Homepage stats - unique posts - can't do it yet because we don't record IPs
-* WebM player
+* WebM Lightbox behaviour refinement
 * Random header image
   * Submit header images
 * Pagination/Ajax load
 * Theme changer from git repository
-* Logo/Favicon
 * Multi-File posts
 * Threads/posts must be aligned left to make room for the post/reply box on smaller screens
 * Recent posts on home page need to be in boxes
