@@ -1,4 +1,4 @@
-Imageboard Software written in Flask. Designed to have very little JS, and should be able to operate with none at all.
+Imageboard Software written in Flask. Designed to have very little JS, and should be able to operate with none at all. GPL-3.0+
 
 ## Creating a Dev Environment
 
