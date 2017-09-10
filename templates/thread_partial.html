@@ -14,7 +14,7 @@
 		</span>
 		<span>{{ entry.date }}</span>
 		
-		<a href='/{{entry.board}}/{{entry.op_id if entry.op_id != 0 else entry.id}}/#{{ entry.id }}' onclick="cite({{ entry.id }})">#{{ entry.id }}</a>
+		<span class="fake_a" onclick="cite({{ entry.id }})">#{{ entry.id }}</span>
 		<a href="{{ url_for('report') }}?id={{entry.id}}&board={{board}}&thread={{entry.op_id}}">report</a>
 
 	</div>
