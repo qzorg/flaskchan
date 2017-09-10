@@ -219,10 +219,14 @@ def dismiss_report(report_id):
     db.session.commit()
 
 def thumbnail(fname):
+    if fname is None: return None
     ext = fname.split(".")[-1]
     if ext == "webm": return "/static/video.png"
     if ext == "pdf": return "/static/doc.png"
     return "/static/thumbs/" + fname
+def tn_all(l):
+    for x in l:
+	x.thumbnail = thumbnail(x.fname)
 
 # Run at app start
 for board in BOARDS:
