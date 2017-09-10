@@ -11,6 +11,10 @@
 * Threads/posts must be aligned left to make room for the post/reply box on smaller screens
 * Recent posts on home page need to be in boxes
 
+# Known Bugs
+* Orange/Yellow line appears underneath media in posts (images and videos)
+* No thumbnail for .webm files on /all/
+
 # Other Things
 * Random thread
 * Activity log (of the entire history of the site)
