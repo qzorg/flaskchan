@@ -28,11 +28,14 @@
 	</div>
     </div>
     <h2> Recent Posts </h2>
+    <div id="r_posts">
     {% for entry in recent_posts %}
 	<div id="post">
 	    {% include("thread_partial.html") %}
 	</div>
     {% endfor %}
+    </div>
+	
 
 </body>
 {% endblock %}
