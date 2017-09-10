@@ -70,8 +70,15 @@ def show_board(board):
         list += replies[::-1]
 
     sidebar = get_sidebar(board)
+    coalesce = lambda x: x.id if x.op_id == 0 else x.op_id
+    list[0].new_thread = False
+    for i in range(len(list) - 1):
+        if coalesce(list[i]) != coalesce(list[i + 1]):
+            list[i + 1].new_thread = True
+        else:
+            list[i + 1].new_thread = False
 
-    return render_template('show_board.html', entries=list, board=board, sidebar=sidebar, id=0, css=css)
+    return render_template('show_board.html', entries=list, board=board, sidebar=sidebar, id=0, css=css, json = json)
 
 @app.route('/<board>/catalog')
 def show_catalog(board):
