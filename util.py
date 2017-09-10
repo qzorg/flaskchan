@@ -27,9 +27,12 @@ def upload_file():
         file.save(join(UPLOAD_FOLDER, fname))
 
         # Pass to PIL to make a thumbnail
-        file = Image.open(file)
-        file.thumbnail((200,200), Image.ANTIALIAS)
-        file.save(join(THUMBS_FOLDER, fname))
+        if ext == "webm":
+            pass
+        else:
+            file = Image.open(file)
+            file.thumbnail((200,200), Image.ANTIALIAS)
+            file.save(join(THUMBS_FOLDER, fname))
     return fname
 
 def allowed_file(filename):
