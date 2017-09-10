@@ -210,6 +210,11 @@ def get_popular_threads():
     l = [x[0] for x in results]
     return [Posts.query.filter_by(id = x).first() for x in l]
 
+def dismiss_report(report_id):
+    report_id = report_id
+    db.session.query(Reports).filter_by(id=report_id).delete()
+    db.session.commit()
+
 # Run at app start
 for board in BOARDS:
     if Boards.query.filter_by(name = board).first() is None:
