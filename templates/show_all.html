@@ -15,7 +15,7 @@
 {% endif %}
 	{% if entry.fname %}
 	<a href="#_" class="lightbox" id="img{{ entry.id }}"><img src="/static/images/{{ entry.fname }}"></a>
-	<a href="#img{{ entry.id }}"> <img class=thumb src=/static/thumbs/{{ entry.fname }}></a>
+	<a href="#img{{ entry.id }}" style="border: none;"> <img class=thumb src=/static/thumbs/{{ entry.fname }}></a>
 	{% endif %}
 	<div class='post_body' id='{{ entry.id }}'>
 	    <div class='byline'>
