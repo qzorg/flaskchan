@@ -40,6 +40,7 @@ def show_frontpage():
     boards = db.engine.execute("SELECT name, long_name FROM " + Boards.__tablename__)
     recent_posts = Posts.query.order_by(Posts.date.desc()).limit(3).all()
     popular_threads = get_popular_threads()
+    tn_all(recent_posts)
     truncate = lambda x: x[:100] + "..." if len(x) > 100 else x
     # Can't get unique posters, we don't record IP addresses
     return render_template('home.html', css=css, total_posts = total_posts, total_ops = total_ops, images = images, boards = boards, recent_posts = recent_posts, render_template = render_template, json = json, popular_threads = popular_threads, truncate = truncate, re = re)
@@ -77,7 +78,7 @@ def show_board(board):
             list[i + 1].new_thread = True
         else:
             list[i + 1].new_thread = False
-
+    tn_all(list)
     return render_template('show_board.html', entries=list, board=board, sidebar=sidebar, id=0, css=css, json = json)
 
 @app.route('/<board>/catalog')
@@ -93,8 +94,9 @@ def show_thread(board, id):
     replies = get_replies(id)
     sidebar = get_sidebar(board)
     css = getcss()
-
-    return render_template('show_thread.html', entries=OP+replies, board=board, id=id, sidebar=sidebar, css=css, render_template = render_template, json = json)
+    entries = OP + replies
+    tn_all(entries)
+    return render_template('show_thread.html', entries=entries, board=board, id=id, sidebar=sidebar, css=css, render_template = render_template, json = json)
 
 @app.route('/add', methods=['POST'])
 def new_thread():
