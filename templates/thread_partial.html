@@ -1,8 +1,8 @@
    {% if entry.fname %}
     <a href="#_" class="lightbox" id="img{{ entry.id }}">
        {% if entry.fname.split('.')[-1] == "webm" %}
-	 <video>
-	    <source href="/static/images/{{ entry.fname }}" />
+	 <video controls>
+	    <source src="/static/images/{{ entry.fname }}" />
 	 </video>
        {% else %}
 	  <img src="/static/images/{{ entry.fname }}">
