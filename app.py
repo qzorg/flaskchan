@@ -39,8 +39,9 @@ def show_frontpage():
     images = sql_get_one(db.engine.execute("SELECT COUNT(*) FROM " + Posts.__tablename__ + " WHERE fname IS NOT NULL AND fname != ''"))
     boards = db.engine.execute("SELECT name, long_name FROM " + Boards.__tablename__)
     recent_posts = Posts.query.order_by(Posts.date.desc()).limit(3).all()
+    popular_threads = get_popular_threads()
     # Can't get unique posters, we don't record IP addresses
-    return render_template('home.html', css=css, total_posts = total_posts, total_ops = total_ops, images = images, boards = boards, recent_posts = recent_posts, render_template = render_template, json = json)
+    return render_template('home.html', css=css, total_posts = total_posts, total_ops = total_ops, images = images, boards = boards, recent_posts = recent_posts, render_template = render_template, json = json, popular_threads = popular_threads)
 
 @app.route('/all/')
 def show_all():

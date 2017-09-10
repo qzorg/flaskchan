@@ -20,6 +20,11 @@
 	    Total posts and replies: {{ total_posts }}<br />
 	    Total OPs: {{ total_ops }}<br />
 	    Total Images: {{ total_images }}<br />
+	    <br />
+	    &lt; popular threads &gt;<br />
+	    {% for entry in popular_threads %}
+		<a href="/{{ entry.board }}/{{ entry.id }}">{{entry.text}}</a><br />
+	    {% endfor %}
 	</div>
     </div>
     <h2> Recent Posts </h2>
