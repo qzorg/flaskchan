@@ -21,6 +21,7 @@ a, .fake_a {
     text-decoration: none;
     border-bottom: 1px solid #f0a000;
     transition: color 0.3s;
+    cursor: pointer;
 }
 
 pre code {
