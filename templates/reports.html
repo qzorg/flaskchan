@@ -30,7 +30,8 @@
                   <td>{{ report.rdate }}</td>
                   <td>{{ report.deleted }}</td>
                   <td>{{ report.op_id }}</td>
-		  <td><a href="/{{report.board}}/{{report.op_id}}/admin"> Examine </a></td>
+                  <td><a href="/{{report.board}}/{{report.op_id}}/admin"> Examine </a></td>
+                  <td><a href="/dismiss/{{report.id}}"> Dismiss </a></td>
                </tr>
             {% endfor %}
          </tbody>

@@ -275,6 +275,13 @@ def changepassword():
                 flash('Passwords must match')
     return render_template('changepassword.html', css=css)
 
+@app.route('/dismiss/<report>', methods = ['GET', 'POST'])
+@requires_auth
+def dismiss(report):
+    report_id = report
+    dismiss_report(report_id)
+    flash('Dismissed')
+    return redirect(request.referrer)
 
 if __name__ == '__main__':
     print(' * Running on http://localhost:5000/ (Press Ctrl-C to quit)')

@@ -205,6 +205,10 @@ def change_password(username, password):
 def sql_get_one(x):
     for r in x: return r[0]
 
+def dismiss_report(report_id):
+    report_id = report_id
+    db.session.query(Reports).filter_by(id=report_id).delete()
+    db.session.commit()
 # Run at app start
 for board in BOARDS:
     if Boards.query.filter_by(name = board).first() is None:
