@@ -218,6 +218,12 @@ def dismiss_report(report_id):
     db.session.query(Reports).filter_by(id=report_id).delete()
     db.session.commit()
 
+def thumbnail(fname):
+    ext = fname.split(".")[-1]
+    if ext == "webm": return "/static/video.png"
+    if ext == "pdf": return "/static/doc.png"
+    return "/static/thumbs/" + fname
+
 # Run at app start
 for board in BOARDS:
     if Boards.query.filter_by(name = board).first() is None:
