@@ -36,4 +36,4 @@
 * Archive thread
 * Mod activity log
 * Better mod panel...
-* Dismiss reports
+* Make mod tools more aesthetically pleasing (CSS)
