@@ -10,6 +10,8 @@
 * Multi-File posts
 * Threads/posts must be aligned left to make room for the post/reply box on smaller screens
 * Recent posts on home page need to be in boxes
+* Add different css effects for when users use different header-types in markdown inside of posts
+    * Make a posting style-guide
 
 # Known Bugs
 * Orange/Yellow line appears underneath media in posts (images and videos)
