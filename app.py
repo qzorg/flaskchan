@@ -8,7 +8,7 @@ from flask.ext.bcrypt import Bcrypt
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask import session, redirect, url_for, escape, request
 from werkzeug.utils import secure_filename
-import os, json
+import os, json, re
 
 
 
@@ -40,8 +40,9 @@ def show_frontpage():
     boards = db.engine.execute("SELECT name, long_name FROM " + Boards.__tablename__)
     recent_posts = Posts.query.order_by(Posts.date.desc()).limit(3).all()
     popular_threads = get_popular_threads()
+    truncate = lambda x: x[:100] + "..." if len(x) > 100 else x
     # Can't get unique posters, we don't record IP addresses
-    return render_template('home.html', css=css, total_posts = total_posts, total_ops = total_ops, images = images, boards = boards, recent_posts = recent_posts, render_template = render_template, json = json, popular_threads = popular_threads)
+    return render_template('home.html', css=css, total_posts = total_posts, total_ops = total_ops, images = images, boards = boards, recent_posts = recent_posts, render_template = render_template, json = json, popular_threads = popular_threads, truncate = truncate, re = re)
 
 @app.route('/all/')
 def show_all():
