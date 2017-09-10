@@ -16,7 +16,7 @@ h1, h2 {
     font-family: "Unscii", monospace;
 }
 
-a {
+a, .fake_a {
     color: white;
     text-decoration: none;
     border-bottom: 1px solid #f0a000;
