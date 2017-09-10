@@ -204,3 +204,14 @@ def change_password(username, password):
 
 def sql_get_one(x):
     for r in x: return r[0]
+
+# Run at app start
+for board in BOARDS:
+    if Boards.query.filter_by(name = board).first() is None:
+	b = Boards()
+	b.name = board
+	b.long_name = board
+	b.description = board
+	b.hidden = False
+	db.session.add(b)
+db.session.commit()
