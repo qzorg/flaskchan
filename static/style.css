@@ -241,11 +241,14 @@ nav:target {
     right: 5%;
     
 }
-.r_posts {
-        
-
-}
 .posts {
     text-align:left;
     padding-left: 35%;
+}
+
+#r_posts .posts {
+    margin: 15px auto;
+    width: 70%;
+    border: 1px solid #f0a000;
+    padding: 5px;
 }
