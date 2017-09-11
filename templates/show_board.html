@@ -1,13 +1,17 @@
 {% extends "layout.html" %}
 {% block body %}
+{% if board != "all" %}
 <nav id="nav" name="nav">
 <div class="sidebarfix sidebarbuttonOFF">
 <a href="#buttonON">CLOSE</a>
 {% include 'sidebar.html' %}
 </div>
 </nav>
+{% endif %}
 <div id=wrap>
+{% if board != "all" %}
 <div name="buttonON"><a href="#nav">POST</a> </div>
+{% endif %}
 <div id=left>
 <div class="threadbox">
 {% for entry in entries %}

@@ -47,22 +47,16 @@ def show_frontpage():
 
 @app.route('/all/')
 def show_all():
-    OPs = get_OPs_all()
-    rules = getrules()
-    css = getcss()
-    list = []
-    for OP in OPs:
-        replies = get_last_replies(OP.id)
-        list.append(OP)
-        list += replies[::-1]
-
-    return render_template('show_all.html', entries=list, board='all', rules=rules, css = css)
+    return show_board("all")
 
 @app.route('/<board>/')
 def show_board(board):
-    if board_inexistent(board):
+    if board_inexistent(board) and board != "all":
         return redirect('/')
-    OPs = get_OPs(board)
+    if board == "all":
+        OPs = get_OPs_all()
+    else:
+        OPs = get_OPs(board)
     list = []
     css = getcss()
     for OP in OPs:
