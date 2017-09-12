@@ -209,7 +209,7 @@ def sql_get_one(x):
     for r in x: return r[0]
 
 def get_popular_threads():
-    results = db.engine.execute("SELECT CASE WHEN op_id = 0 THEN id ELSE op_id END AS normalized_id, COUNT(*) AS count FROM " + Posts.__tablename__ + " WHERE date > (DATETIME('now') - 604800) AND NOT deleted GROUP BY normalized_id ORDER BY count DESC LIMIT 5")
+    results = db.engine.execute("SELECT CASE WHEN op_id = 0 THEN id ELSE op_id END AS normalized_id, COUNT(*) AS count FROM " + Posts.__tablename__ + " WHERE date > (DATETIME('now') - 604800) AND NOT deleted AND NOT (SELECT hidden FROM "+Boards.__tablename__+" WHERE name = board) GROUP BY normalized_id ORDER BY count DESC LIMIT 5")
     l = [x[0] for x in results]
     return [Posts.query.filter_by(id = x).first() for x in l]
 
@@ -229,12 +229,15 @@ def tn_all(l):
 	x.thumbnail = thumbnail(x.fname)
 
 # Run at app start
-for board in BOARDS:
-    if Boards.query.filter_by(name = board).first() is None:
-	b = Boards()
-	b.name = board
-	b.long_name = board
-	b.description = board
-	b.hidden = False
-	db.session.add(b)
+try:
+    for board in BOARDS:
+	if Boards.query.filter_by(name = board).first() is None:
+	    b = Boards()
+	    b.name = board
+	    b.long_name = board
+	    b.description = board
+	    b.hidden = False
+	    db.session.add(b)
+except:
+    pass
 db.session.commit()
