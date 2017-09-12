@@ -12,10 +12,14 @@
 * Recent posts on home page need to be in boxes
 * Add different css effects for when users use different header-types in markdown inside of posts
     * Make a posting style-guide
+* Make the rules window on /all/ toggle like the floating posting and reply boxes do (should be simple)
+
 
 # Known Bugs
-* Orange/Yellow line appears underneath media in posts (images and videos)
-* No thumbnail for .webm files on /all/
+* Long filenames don't get truncated and cause the floating post/reply box to expand to the right
+* Sometimes the floating rules window on /all/ won't fit on the page if there are too many rules
+* /lewd/ threads show up on /all/ and the homepage's recent posts panel
+* users can cause [non-existant threads to be loaded by the server](https://git.omnius.zone/omnius/omnius-zone/issues/14)
 
 # Other Things
 * Random thread
@@ -40,4 +44,3 @@
 * Archive thread
 * Mod activity log
 * Better mod panel...
-* Make mod tools more aesthetically pleasing (CSS)
