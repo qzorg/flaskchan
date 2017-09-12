@@ -98,7 +98,7 @@ blockquote p {
     display: inline-block;
 }
 
-.r_posts .post {
+#r_posts .posts {
     background-color: #161616;
     margin: 15px auto;
     width: 70%;
