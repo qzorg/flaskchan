@@ -1,17 +1,21 @@
-<span id=right>
+<div class="sidebarfix sidebarbuttonOFF">
+<a href="#buttonON">CLOSE</a>
+
+<div id=right>
 	<p><b>{{ sidebar.long_name }}</b></p>
 	{{ sidebar.description|markdown if sidebar }}
 	{% if board != 'all' %}
 	<form action="{{ url_for('new_thread') }}" enctype=multipart/form-data method=post>
 		<input type="hidden" name="board" value="{{ board }}">
 		<input type="hidden" name="op_id" value="{{ id }}">
-		<input type=text name=name placeholder=Name>
-		<div class=fieldpadding><input type=text name=email placeholder=Email></div>
-		<div class=fieldpadding><input type=text name=subject placeholder=Subject></div>
-		<div class=fieldpadding><textarea id=comment name=post_content rows=8 placeholder="Post (Markdown)" style='width: 98%'></textarea></div>
-		<input type=file name=file>
+		<input type=text name=name placeholder=Name><br>
+		<input type=text name=email placeholder=Email><br>
+		<input type=text name=subject placeholder=Subject><br>
+		<textarea id=comment name=post_content rows=8 placeholder="Post (Markdown)" style='width: 98%'></textarea><br>
+		<input type=file name=file><br>
 		<input type=submit value=Post style='width: 100%'>
 	</form>
 	{% endif %}
 	
-</span>
+</div>
+</div>

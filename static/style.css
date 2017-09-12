@@ -188,24 +188,19 @@ blockquote p {
 
 /* *** POST FORM *** */
 
-#right {
-    width: 100px;
-    height:273px;
-    background: #161616;
-    border-radius: 2px;
-    display: table;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-bottom: 10px;
-    margin: 10px;
-    border: 1px solid #f0a000;
+nav {
+    display: none;
+}
+
+nav:target {
+    display: block !important;
 }
 
 .sidebarfix{
     position: fixed;
     top: 10%;
     right: 10px;
-    overflow-y: auto;
+    min-width: 30%;
 }
 
 .sidebarbuttonON {
@@ -216,12 +211,25 @@ blockquote p {
     z-index: 1001;
 }
 
-nav {
-    display: none;
+#right {
+    display: block;
+    background: #161616;
+    border-radius: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    margin: 10px;
+    border: 1px solid #f0a000;
+    text-align: left;
 }
 
-nav:target {
-    display: block !important;
+#right p {
+    text-align: center;
+}
+
+#right form {
+    margin: 10px;
+    margin-right: 20px;
 }
 
 input, textarea, button {
@@ -231,8 +239,8 @@ input, textarea, button {
     margin: 5px;
 }
 
-.fieldpadding{
-    padding-top: 7px;
+#file {
+    max-width: 250px;
 }
 
 /* *** THREAD/BOARD *** */
