@@ -1,3 +1,6 @@
+<div class="sidebarfix sidebarbuttonOFF">
+<a href ="#buttonON">CLOSE</a>
+
 <span id=right>
 	<p><b>{{ sidebar.long_name }}</b></p>
 	{{ sidebar.description|markdown if sidebar }}
@@ -12,10 +15,11 @@
 		<br/>
 		<textarea id=comment name=post_content rows=8 placeholder="Comment (Markdown)" style='width: 98%;'></textarea>
 
-		<input type=file name=file>
+		<input id="file" type=file name=file>
 		<input type=submit value=Reply style='width: 90%'>
 		<br>
 	</form>
 	{% endif %}
 
 </span>
+</div>
