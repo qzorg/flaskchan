@@ -269,3 +269,75 @@ input, textarea, button {
 #subject {
     color: white;
 }
+
+.post_body h1 {
+         display: inline;
+	 font-size: 1.17em;
+	 margin-top: 1em;
+	 margin-bottom: 1em;
+	 margin-left: 0;
+	 margin-right: 0;
+	 font-weight: bold;
+}
+
+
+.post_body h2 {
+    display: inline;
+    font-size: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: normal;
+    color: red;
+}
+
+.post_body h3 {
+    
+    display: inline;
+    font-size: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: normal;
+    color: green;
+}
+
+.post_body h4 {
+    
+    display: inline;
+    font-size: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: normal;
+    font-variant: small-caps;
+}
+
+.post_body h5 {
+    
+    display: inline;
+    font-size: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: normal;
+    text-decoration: underline;
+    font-style: italic;
+}
+
+.post_body h6 {
+    
+    display: inline;
+    font-size: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: normal;
+    letter-spacing: 0.35em;
+}
+
