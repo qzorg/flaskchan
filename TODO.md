@@ -9,8 +9,7 @@
 * Theme changer from git repository
 * Multi-File posts
 * Threads/posts must be aligned left to make room for the post/reply box on smaller screens
-* Add different css effects for when users use different header-types in markdown inside of posts
-    * Make a posting style-guide
+* Make a posting style-guide for non-default markdown formatting effects
 * Make the rules window on /all/ toggle like the floating posting and reply boxes do (should be simple)
 
 
