@@ -283,7 +283,7 @@ input, textarea, button {
 
 .post_body h2 {
     display: inline;
-    font-size: 0;
+    font-size: 1em;
     margin-top: 0;
     margin-bottom: 0;
     margin-left: 0;
@@ -295,7 +295,7 @@ input, textarea, button {
 .post_body h3 {
     
     display: inline;
-    font-size: 0;
+    font-size: 1em;
     margin-top: 0;
     margin-bottom: 0;
     margin-left: 0;
@@ -307,7 +307,7 @@ input, textarea, button {
 .post_body h4 {
     
     display: inline;
-    font-size: 0;
+    font-size: 1em;
     margin-top: 0;
     margin-bottom: 0;
     margin-left: 0;
@@ -319,7 +319,7 @@ input, textarea, button {
 .post_body h5 {
     
     display: inline;
-    font-size: 0;
+    font-size: 1em;
     margin-top: 0;
     margin-bottom: 0;
     margin-left: 0;
@@ -332,7 +332,7 @@ input, textarea, button {
 .post_body h6 {
     
     display: inline;
-    font-size: 0;
+    font-size: 1em;
     margin-top: 0;
     margin-bottom: 0;
     margin-left: 0;
