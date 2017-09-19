@@ -8,7 +8,7 @@ from flask.ext.bcrypt import Bcrypt
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask import session, redirect, url_for, escape, request
 from werkzeug.utils import secure_filename
-import os, json, re
+import os, json, re, random
 
 
 
@@ -38,7 +38,7 @@ def show_frontpage():
     total_ops = sql_get_one(db.engine.execute("SELECT COUNT(*) FROM " + Posts.__tablename__ + " WHERE op_id = 0 AND NOT deleted"))
     images = sql_get_one(db.engine.execute("SELECT COUNT(*) FROM " + Posts.__tablename__ + " WHERE fname IS NOT NULL AND fname != '' AND NOT deleted"))
     boards = db.engine.execute("SELECT name, long_name FROM " + Boards.__tablename__)
-    recent_posts = Posts.query.order_by(Posts.date.desc()).limit(3).all()
+    recent_posts = Posts.query.order_by(Posts.date.desc()).filter(Posts.board != 'lewd').limit(3).all()
     popular_threads = get_popular_threads()
     tn_all(recent_posts)
     truncate = lambda x: x[:100] + "..." if len(x) > 100 else x
@@ -81,13 +81,38 @@ def show_board(board):
 
 @app.route('/imagedump/')
 def show_imagedump():
-    image_count = sql_get_one(db.engine.execute("SELECT COUNT(*) FROM " + Posts.__tablename__ + " WHERE fname IS NOT NULL AND fname != '' AND NOT deleted"))
     image_data = db.engine.execute("SELECT fname FROM " + Posts.__tablename__ + " WHERE fname IS NOT NULL AND fname != '' AND NOT deleted").fetchall()
     images = []
     for image in image_data:
         images.append(image[0])
+    image_count = len(images)
     css = getcss()
     return render_template('imagedump.html', css=css, image_count=image_count, images=images)
+
+@app.route('/random/')
+def random_thread():
+    #OPs = db.session.query(Posts).filter_by(op_id = '0', deleted = 0).filter(Posts.board != "lewd").offset(int(rowCount*random.random())).first()
+    OPs_data = db.engine.execute("SELECT id, board FROM " + Posts.__tablename__ + " WHERE board IS NOT 'lewd' AND NOT deleted").fetchall()
+    OP_ids = []
+    OP_boards = []
+    for OP in OPs_data:
+        OP_ids.append(OP[0])
+        OP_boards.append(OP[1])
+    
+    random_int = random.randint(0, len(OP_ids)-1)
+
+    return redirect('/' + OP_boards[random_int] + '/' + str(OP_ids[random_int]))
+
+@app.route('/random_image/')
+def random_image():
+    image_data = db.engine.execute("SELECT fname FROM " + Posts.__tablename__ + " WHERE fname IS NOT NULL AND fname != '' AND NOT deleted").fetchall()
+    images = []
+    for image in image_data:
+        images.append(image[0])
+    image_count = len(images)
+    image = random.choice(images)
+    return redirect('/static/images/' + image)
+
 
 @app.route('/<board>/catalog')
 def show_catalog(board):
