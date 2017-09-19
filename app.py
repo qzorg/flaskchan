@@ -113,6 +113,15 @@ def random_image():
     image = random.choice(images)
     return redirect('/static/images/' + image)
 
+@app.route('/random_image_sfw/')
+def random_image_sfw():
+    image_data = db.engine.execute("SELECT fname FROM " + Posts.__tablename__ + " WHERE fname IS NOT NULL AND fname != '' AND NOT deleted AND board IS NOT 'lewd'").fetchall()
+    images = []
+    for image in image_data:
+        images.append(image[0])
+    image_count = len(images)
+    image = random.choice(images)
+    return redirect('/static/images/' + image)
 
 @app.route('/<board>/catalog')
 def show_catalog(board):
