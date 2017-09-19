@@ -79,6 +79,16 @@ def show_board(board):
     tn_all(list)
     return render_template('show_board.html', entries=list, board=board, sidebar=sidebar, id=0, css=css, json = json)
 
+@app.route('/imagedump/')
+def show_imagedump():
+    image_count = sql_get_one(db.engine.execute("SELECT COUNT(*) FROM " + Posts.__tablename__ + " WHERE fname IS NOT NULL AND fname != '' AND NOT deleted"))
+    image_data = db.engine.execute("SELECT fname FROM " + Posts.__tablename__ + " WHERE fname IS NOT NULL AND fname != '' AND NOT deleted").fetchall()
+    images = []
+    for image in image_data:
+        images.append(image[0])
+    css = getcss()
+    return render_template('imagedump.html', css=css, image_count=image_count, images=images)
+
 @app.route('/<board>/catalog')
 def show_catalog(board):
     OPs = get_OPs_catalog(board)

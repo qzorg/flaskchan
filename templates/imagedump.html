@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+<!doctype html><head>
+<title>Omnius Imagedump</title>
+<link rel=stylesheet type=text/css href="/static/{{ css }}">
+<body>
+{% block body %}
+Showing {{ image_count }} images from the Evermind <br> 
+{% for image in images %}
+       {% if image.split('.')[-1] == "webm" %}
+	 <video controls>
+	    <source src="/static/images/{{ image }}" />
+	 </video>
+       {% else %}
+	  <img src="/static/images/{{ image }}">
+       {% endif %}
+       <br>
+{% endfor %}
+</body>
+{% endblock %}
+
+
