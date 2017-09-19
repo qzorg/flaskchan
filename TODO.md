@@ -15,10 +15,8 @@
 
 # Known Bugs
 * Sometimes the floating rules window on /all/ won't fit on the page if there are too many rules
-* /lewd/ threads show up on /all/ and the homepage's recent posts panel
 
 # Other Things
-* Random thread
 * Activity log (of the entire history of the site)
 * Board logos?
 * Board-specific themes?
