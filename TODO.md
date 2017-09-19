@@ -1,5 +1,4 @@
 # General Site
-* Image dump - load every image on the site
 * Random image
 * Homepage stats - unique posts - can't do it yet because we don't record IPs
 * WebM Lightbox behaviour refinement
@@ -23,7 +22,6 @@
 * Activity log (of the entire history of the site)
 * Board logos?
 * Board-specific themes?
-* Static Footer for homepage and boards
 * Headers for boards - board rules, topic, and board name in bold
 * anchored floating catalog button
 * Color posts' and replies' subjects, dates, and usernames seperately
