@@ -99,6 +99,9 @@ def show_catalog(board):
 @app.route('/<board>/<id>/')
 def show_thread(board, id):
     OP      = get_thread_OP(id)
+    print(OP)
+    if OP == []:
+        return redirect('/' + board + '/')
     replies = get_replies(id)
     sidebar = get_sidebar(board)
     css = getcss()
