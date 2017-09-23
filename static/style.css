@@ -321,7 +321,20 @@ input, textarea, button {
     margin-left: 0;
     margin-right: 0;
     font-weight: normal;
-    font-variant: small-caps;
+    background: black;
+    color: black;
+}
+
+.post_body:hover h4 {
+    color:white;
+    display: inline;
+    font-size: 1em;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: normal;
+    background: black;
 }
 
 .post_body h5 {
