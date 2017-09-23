@@ -274,6 +274,10 @@ input, textarea, button {
     line-height: 120%;
 }
 
+.thread, .post_body {
+    transition: border 0.3s;
+}
+
 .thread, .post_body:target {
     border: 1px solid #f0a000;
 }
