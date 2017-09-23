@@ -1,9 +1,7 @@
-{% extends "layout.html" %}
 <!doctype html><head>
 <title>Omnius</title>
-<link rel=stylesheet type=text/css href="/static/{{ css }}">
+<link rel=stylesheet type=text/css href="/static/style.css">
 <body>
-{% block body %}
     <h1>⬝•●◖◗⬤ OMNIUS ⬤◖◗●•⬝</h1>
     &lt; Any key to continue &gt;
 
@@ -23,14 +21,14 @@
              <ul>
                  <li>You can mark the end of any of these with a new line or by closing it with another octothorpe</li>
              </ul>
-            <li>"> " at the beginning of a line will quote</li>
+            <li>greater-than at the beginning of a line will quote</li>
             <li>a backtick (`) at the beginning and the end of a text segment will mark it as code</li>
             <li>an underscore or asterisk at the beginning and end of a text segment will italicize it</li>
             <li>two underscores or asterisks at the beginning and end of  a text segment will bolden it</li>
         </ul>
         <h4>Blocks:</h4>
         <ul>
-            <li>"> " at the beginning of several lines in a row is a block-quote. These can include other elements inside of them, including more quotes.</li>
+            <li>greater-than at the beginning of several lines in a row is a block-quote. These can include other elements inside of them, including more quotes.</li>
             <li>Ordered lists can be done by prefixing each line with a number, a period, and a comma. Like this: "1. Item 1"</li>
              <ul>
                  <li>Note: Starting any line with a number followed by a period, however long, will trigger this. To avoid triggering this you can type a backslash before the period.</li>
@@ -72,7 +70,6 @@
         </ol>
         <p>In case you are wondering where the example for the unordered list is, I'll leave that for you to find out on your own, dipshit.</p>
 	</div>
-
+    </div>
 </body>
-{% endblock %}
 
