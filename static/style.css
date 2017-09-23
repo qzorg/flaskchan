@@ -325,7 +325,7 @@ input, textarea, button {
     color: black;
 }
 
-.post_body:hover h4 {
+.post_body h4:hover {
     color:white;
     display: inline;
     font-size: 1em;
