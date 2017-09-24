@@ -104,6 +104,11 @@ blockquote p {
     display: inline-block;
 }
 
+.far_right_box {
+    width: 49%;
+    display: block;
+}
+
 #r_posts .posts {
     background-color: #161616;
     margin: 15px auto;
