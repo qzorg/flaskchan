@@ -288,7 +288,8 @@ input, textarea, button {
 
 }
 .thumb{
-    float:left;   
+    float:left;
+    padding-right: 3%;
    
 }
 
