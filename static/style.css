@@ -173,6 +173,7 @@ blockquote p {
 .posts {
     text-align:left;
     padding-left: 35%;
+    overflow: auto;
 }
 
 /* *** LIGHTBOX *** */
@@ -271,17 +272,24 @@ input, textarea, button {
     border: 1px solid #f0a000;
     margin: 10px 0;
 }
-
+.thread{
+    overflow: auto;
+}
 .thread, .post {
     padding: 20px;
     margin: 5px;
     background-color: #161616;
 }
 
-.thumb, .post_body, .far_right_block {
+ .post_body, .far_right_block {
     display: inline-block;
     vertical-align: top;
     text-align: left;
+
+}
+.thumb{
+    float:left;   
+   
 }
 
 .thread, .post_body p {
