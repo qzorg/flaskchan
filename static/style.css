@@ -96,6 +96,7 @@ blockquote p {
 .far_left_box {
     width: 49%;
     display: block;
+    float:left;
     text-align:left;
 }
 
