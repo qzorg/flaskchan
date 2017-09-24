@@ -275,7 +275,7 @@ input, textarea, button {
     background-color: #161616;
 }
 
-.thumb, .post_body {
+.thumb, .post_body, .far_right_block {
     display: inline-block;
     vertical-align: top;
     text-align: left;
@@ -289,7 +289,7 @@ input, textarea, button {
     color: white;
 }
 
-.post_body h1 {
+.post_body, .far_right_block h1 {
          display: inline;
 	 font-size: 1.17em;
 	 margin-top: 1em;
@@ -300,7 +300,7 @@ input, textarea, button {
 }
 
 
-.post_body h2 {
+.post_body, .far_right_block h2 {
     display: inline;
     font-size: 1em;
     margin-top: 0;
@@ -311,7 +311,7 @@ input, textarea, button {
     color: red;
 }
 
-.post_body h3 {
+.post_body, .far_right_block h3 {
     
     display: inline;
     font-size: 1em;
@@ -323,7 +323,7 @@ input, textarea, button {
     color: green;
 }
 
-.post_body h4 {
+.post_body, .far_right_block h4 {
     
     display: inline;
     font-size: 1em;
@@ -336,7 +336,7 @@ input, textarea, button {
     color: black;
 }
 
-.post_body h4:hover {
+.post_body, .far_right_block h4:hover {
     color:white;
     display: inline;
     font-size: 1em;
@@ -348,7 +348,7 @@ input, textarea, button {
     background: black;
 }
 
-.post_body h5 {
+.post_body, .far_right_block h5 {
     
     display: inline;
     font-size: 1em;
@@ -361,7 +361,7 @@ input, textarea, button {
     font-style: italic;
 }
 
-.post_body h6 {
+.post_body, .far_right_block h6 {
     
     display: inline;
     font-size: 1em;
