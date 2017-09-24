@@ -93,6 +93,12 @@ blockquote p {
     display: inline-block;
 }
 
+.far_left_box {
+    width: 49%;
+    display: block;
+
+}
+
 .right_box {
     width: 49%;
     display: inline-block;
