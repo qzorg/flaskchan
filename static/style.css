@@ -96,7 +96,7 @@ blockquote p {
 .far_left_box {
     width: 49%;
     display: block;
-
+    text-align:left;
 }
 
 .right_box {
@@ -107,6 +107,7 @@ blockquote p {
 .far_right_box {
     width: 49%;
     display: block;
+    text-align:left;
 }
 
 #r_posts .posts {
