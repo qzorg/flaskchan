@@ -376,3 +376,11 @@ input, textarea, button {
     letter-spacing: 0.35em;
 }
 
+.copy-left {
+    display: inline-block;
+    text-align:right;
+    margin: 0px;
+    -moz-transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+}
