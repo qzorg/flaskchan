@@ -94,9 +94,8 @@ blockquote p {
 }
 
 .far_left_box {
-    width: 30%;
+    width: 35%;
     display: block;
-    float:left;
     text-align:left;
 }
 
@@ -106,7 +105,7 @@ blockquote p {
 }
 
 .far_right_box {
-    width: 30%;
+    width: 20%;
     display: block;
     float:right
     text-align:left;
