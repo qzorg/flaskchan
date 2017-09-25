@@ -279,6 +279,7 @@ input, textarea, button {
     padding: 20px;
     margin: 5px;
     background-color: #161616;
+    overflow: auto;
 }
 
  .post_body, .far_right_block {
