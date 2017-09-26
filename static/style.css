@@ -93,9 +93,23 @@ blockquote p {
     display: inline-block;
 }
 
+.far_left_box {
+    width: 35%;
+    display: block;
+    float:left;
+    text-align:left;
+}
+
 .right_box {
     width: 49%;
     display: inline-block;
+}
+
+.far_right_box {
+    width: 20%;
+    display: block;
+    float:right
+    text-align:left;
 }
 
 #r_posts .posts {
@@ -174,6 +188,7 @@ blockquote p {
 .posts {
     text-align:left;
     padding-left: 35%;
+    overflow: auto;
 }
 
 /* *** LIGHTBOX *** */
@@ -272,17 +287,26 @@ input, textarea, button {
     border: 1px solid #f0a000;
     margin: 10px 0;
 }
-
+.thread{
+    overflow: auto;
+}
 .thread, .post {
     padding: 20px;
     margin: 5px;
     background-color: #161616;
+    overflow: auto;
 }
 
-.thumb, .post_body {
+ .post_body, .far_right_block {
     display: inline-block;
     vertical-align: top;
     text-align: left;
+
+}
+.thumb{
+    float:left;
+    padding-right: 3%;
+   
 }
 
 .thread, .post_body p {
@@ -292,9 +316,17 @@ input, textarea, button {
 #subject {
     color: white;
 }
+.post_body {
+     display: inline;
+	 font-size: 1.17em;
+	 margin-top: 1em;
+	 margin-bottom: 1em;
+	 margin-left: 0;
+	 margin-right: 0;
 
-.post_body h1 {
-         display: inline;
+}
+.post_body h1, .far_right_block h1 {
+     display: inline;
 	 font-size: 1.17em;
 	 margin-top: 1em;
 	 margin-bottom: 1em;
@@ -304,7 +336,7 @@ input, textarea, button {
 }
 
 
-.post_body h2 {
+.post_body h2, .far_right_block h2 {
     display: inline;
     font-size: 1em;
     margin-top: 0;
@@ -315,7 +347,7 @@ input, textarea, button {
     color: red;
 }
 
-.post_body h3 {
+.post_body h3, .far_right_block h3 {
     
     display: inline;
     font-size: 1em;
@@ -327,7 +359,7 @@ input, textarea, button {
     color: green;
 }
 
-.post_body h4 {
+.post_body h4, .far_right_block h4 {
     
     display: inline;
     font-size: 1em;
@@ -336,10 +368,23 @@ input, textarea, button {
     margin-left: 0;
     margin-right: 0;
     font-weight: normal;
-    font-variant: small-caps;
+    background: black;
+    color: black;
 }
 
-.post_body h5 {
+.post_body h4:hover, .far_right_block h4:hover {
+    color:white;
+    display: inline;
+    font-size: 1em;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: normal;
+    background: black;
+}
+
+.post_body h5, .far_right_block h5 {
     
     display: inline;
     font-size: 1em;
@@ -352,7 +397,7 @@ input, textarea, button {
     font-style: italic;
 }
 
-.post_body h6 {
+.post_body h6, .far_right_block h6 {
     
     display: inline;
     font-size: 1em;
@@ -362,5 +407,14 @@ input, textarea, button {
     margin-right: 0;
     font-weight: normal;
     letter-spacing: 0.35em;
+}
+
+.copy-left {
+    display: inline-block;
+    text-align:right;
+    margin: 0px;
+    -moz-transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
 }
 
