@@ -105,6 +105,21 @@ blockquote p {
     border: 1px solid #f0a000;
     padding: 5px;
 }
+
+#anykey {
+    border: none;
+    color: transparent;
+    height: 0;
+    width: 0;
+}
+
+#anykey:valid ~ span {
+    background-color: white;
+    color: #101010;
+    transition: 0.5s;
+    padding: 5px;
+}
+
 /* *** SITEWIDE PAGE ELEMENTS *** */
 
 #header {
