@@ -30,9 +30,12 @@ def upload_file():
         if ext == "webm":
             pass
         else:
-            file = Image.open(file)
-            file.thumbnail((200,200), Image.ANTIALIAS)
-            file.save(join(THUMBS_FOLDER, fname))
+            try:
+                file = Image.open(file)
+                file.thumbnail((200,200), Image.ANTIALIAS)
+                file.save(join(THUMBS_FOLDER, fname))
+            except:
+                pass
     return fname
 
 def allowed_file(filename):
