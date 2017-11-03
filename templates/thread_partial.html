@@ -22,10 +22,16 @@
 		</span>
 		<span>{{ entry.date }}</span>
 		
-		<span class="fake_a" onclick="cite({{ entry.id }}, {{ entry.op_id }}, {{ json.dumps(entry.board) }})">#{{ entry.id }}</span>
-        <a href="{{ url_for('report') }}?id={{entry.id}}&board={{board}}&thread={{entry.op_id}}">report</a>
+ {% if user == "mod" %}
+       
+    <a href="{{ url_for('delete') }}?id={{entry.id}}&board={{board}}&thread={{entry.op_id}}">delete</a>  <a href="/ban/{{ entry.id }}">ban</a> 
+        <a href="/mod/{{ entry.board }}/{{entry.id}}/">reply</a> 
+        {% else %}
 
+  <a href="{{ url_for('report') }}?id={{entry.id}}&board={{board}}&thread={{entry.op_id}}">report</a>
+        <a href="/{{ entry.board }}/{{entry.id}}/">reply</a>
 
+        {% endif %}
 	</div>
 	{{ entry.text|markdown }}
 </div>

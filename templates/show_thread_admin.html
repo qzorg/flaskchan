@@ -27,7 +27,8 @@
 		<span>{{ entry.date }}</span>
 		
 			<a href='#{{ entry.id }}' onclick="cite({{ entry.id }})">#{{ entry.id }}</a>
-					<a href="{{ url_for('delete') }}?id={{entry.id}}&board={{board}}&thread={{entry.op_id}}">delete</a>
+            <a href="{{ url_for('delete') }}?id={{entry.id}}&board={{board}}&thread={{entry.op_id}}">delete</a>  <a href="/ban/{{ entry.id }}">ban</a>
+ 
 
 	</div>
 	{{ entry.text|markdown }}
@@ -35,6 +36,6 @@
 </div>
 {% endfor %}
 </div>
-{% include 'sidebar_reply.html' %}
+
 </div>
 {% endblock %}

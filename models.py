@@ -20,6 +20,7 @@ class Posts(db.Model):
     text      = db.Column(db.Text)
     last_bump = db.Column(db.DateTime)
     deleted   = db.Column(db.Boolean)
+    ip        = db.Column(db.String)
 
 class Users(db.Model):
     __tablename__ = 'users'
@@ -45,4 +46,10 @@ class Css(db.Model):
     id        = db.Column(db.Integer, primary_key = True, autoincrement=True)
     css   = db.Column(db.String)
     edited  = db.Column(db.String)
+
+class Banned(db.Model):
+   id = db.Column('banned', db.Integer, primary_key = True)
+   date = db.Column(db.String)
+   ip = db.Column(db.String)
+
    

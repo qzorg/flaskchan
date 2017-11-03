@@ -39,10 +39,17 @@
 		<a href="/{{ entry.board }}/{{ entry.id }}">#{{ entry.id }}</a>
 		{% endif %}
 
-		{% endif %}
-        <a href="{{ url_for('report') }}?id={{entry.id}}&board={{board}}&thread={{entry.op_id}}">report</a>
+        {% endif %}
+        {% if user == "mod" %}
+       
+    <a href="{{ url_for('delete') }}?id={{entry.id}}&board={{board}}&thread={{entry.op_id}}">delete</a>  <a href="/ban/{{ entry.id }}">ban</a> 
+        <a href="/mod/{{ entry.board }}/{{entry.id}}/">reply</a> 
+        {% else %}
+
+  <a href="{{ url_for('report') }}?id={{entry.id}}&board={{board}}&thread={{entry.op_id}}">report</a>
         <a href="/{{ entry.board }}/{{entry.id}}/">reply</a>
 
+        {% endif %}
 	</div>
 	{{ entry.text|markdown }}
     </div>

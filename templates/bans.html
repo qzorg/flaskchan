@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang = "en">
+   <head>
+<link rel=stylesheet type=text/css href="/static/{{ css }}">
+	<title>Bans</title>
+	
+   </head>
+   <body>
+	<center>
+      <h2>Bans</h2>
+	</center>
+      <hr/>
+      <div class="centeredreports">
+<center>
+      <table>
+         <thead>
+            <tr>
+              
+               <th>Ban Date</th>
+           <th>IP</th> 
+		<th>&nbsp</th>
+            </tr>
+         </thead>
+         
+         <tbody>
+            {% for ban in bans %}
+               <tr>
+                  <td>{{ ban.date }}</td>
+                  <td>{{ ban.ip }}</td>
+                  
+                  <td><a href="/mod/unban/{{ ban.id }}"> Unban </a></td>
+               </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+</center>
+      </div>
+   </body>
+</html>
+
+

@@ -2,7 +2,7 @@ from flask import request, flash, redirect, url_for
 from time import time
 from os.path import join
 from PIL import Image
-from models import Boards, Posts, Users, Reports, Rules, Css
+from models import Boards, Posts, Users, Reports, Rules, Css, Banned
 from app import db
 from datetime import datetime
 from config import *
@@ -75,7 +75,7 @@ def get_thread_OP(id):
 def get_sidebar(board):
     return db.session.query(Boards).filter_by(name=board).first()
 
-def new_post(board, op_id = 0):
+def new_post(board, ipaddr, op_id = 0):
     newPost = Posts(board   = board,
                     name    = request.form['name'],
                     subject = request.form['subject'],
@@ -84,7 +84,8 @@ def new_post(board, op_id = 0):
                     date    = datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                     fname   = upload_file(),
                     op_id   = op_id, # Threads are normal posts with op_id set to 0
-                    deleted = False)
+                    deleted = False,
+                    ip = ipaddr)
     return newPost
 
 
@@ -231,6 +232,26 @@ def tn_all(l):
     for x in l:
 	x.thumbnail = thumbnail(x.fname)
 
+
+def check_banned(ipaddr):
+    if db.session.query(Banned).filter_by(ip=ipaddr).all():
+	return True
+    else:
+        return False
+
+def get_ip(variable):
+    post = db.session.query(Posts).filter_by(id=variable).first()
+    return post.ip
+def ban(date, ip):
+    newBan = Banned(date = date, ip = ip)
+    db.session.add(newBan)
+    db.session.commit()
+def unban_ip(id):
+    db.session.query(Banned).filter_by(id=id).delete()
+    db.session.commit()
+def get_bans():
+    bans = db.session.query(Banned).all()
+    return bans
 # Run at app start
 try:
     for board in BOARDS:
