@@ -15,7 +15,7 @@ Imageboard Software written in Flask. Designed to have very little JS, and shoul
 ## Deploying on Apache wsgi
 
 1. apt-get install git apache2 libapache2-mod-wsgi libjpeg-dev zlib1g-dev python python-dev python-pip libffi-dev
-2. cd /var/www/ && git clone https://github.com/qzorg/devchan-engine.git
+2. cd /var/www/ && git clone https://github.com/qzorg/flaskchan.git
 3. Modify the Deploy/app.wsgi file to fit your needs, then copy it to your $SITEROOT/flaskchan/.
 4. Edit the Deploy/devchan.conf and replace all lines that start with $ with your own information. Copy the devchan.conf file to your /etc/apache2/sites-enabled/.
 5. pip install -r requirements.txt.
