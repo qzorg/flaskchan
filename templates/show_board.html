@@ -12,8 +12,10 @@
 <div id=left>
 <div class="threadbox">
 {% for entry in entries %}
+
 {% if entry.new_thread %}
 </div>
+<hr />
 <div class="threadbox">
 {% endif %}
 {% if entry.op_id %}

@@ -158,7 +158,7 @@ blockquote p {
 
 #wrap {
     text-align: left;
-    width: 1000px;
+    
     margin: 50px auto;
 }
 
@@ -238,7 +238,7 @@ nav:target {
 
 #right {
     display: block;
-    background: #161616;
+    background: #bcd5fb;
     border-radius: 2px;
     padding-left: 10px;
     padding-right: 10px;
@@ -258,8 +258,8 @@ nav:target {
 }
 
 input, textarea, button {
-    color: #222450;
-    background-color: #101010;
+    color: #202247;
+    background-color: #fbfbfb;
     border: 1px solid #222450;
     margin: 5px;
 }
@@ -279,17 +279,17 @@ input, textarea, button {
 }
 
 .threadbox {
-    border: 5px solid #222450;
+    #border: 5px solid #9a9cbb;
     margin: 10px 0;
 }
 .thread{
     overflow: auto;
 }
+
 .thread, .post {
     padding: 20px;
     margin: 5px;
-    background-color: #f4e8e8;
-    border: 1px solid #222450;
+
 
     overflow: auto;
 }
@@ -414,5 +414,12 @@ input, textarea, button {
     filter: FlipH;
     -ms-filter: "FlipH";
 }
+.post{
+        background-color: #f4e8e8;
+        border: 1px solid #222450;
+        margin-left: 4%;
+        width: 80%;
+        overflow: hidden
 
+}
 

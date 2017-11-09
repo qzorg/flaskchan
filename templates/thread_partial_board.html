@@ -26,14 +26,14 @@
 		{% if board != 'all' %}
 		
 		{% if entry.op_id %}
-		<a href="{{ entry.op_id }}#{{ entry.id }}">#{{ entry.id }}</a>
+        <a href="{{ entry.op_id }}#{{ entry.id }}">#{{ entry.id }}</a>
 		{% else %}
 		    <a href="{{ entry.id }}">#{{ entry.id }}</a>
 		{% endif %}
-
-		{% else %}
+        		{% else %}
 		
-		{% if entry.op_id %}
+        {% if entry.op_id %}
+        
 		<a href="/{{ entry.board }}/{{ entry.op_id }}#{{ entry.id }}">#{{ entry.id }}</a>
 		{% else %}
 		<a href="/{{ entry.board }}/{{ entry.id }}">#{{ entry.id }}</a>
@@ -41,7 +41,6 @@
 
         {% endif %}
         {% if user == "mod" %}
-       
     <a href="{{ url_for('delete') }}?id={{entry.id}}&board={{board}}&thread={{entry.op_id}}">delete</a>  <a href="/ban/{{ entry.id }}">ban</a> 
         <a href="/mod/{{ entry.board }}/{{entry.id}}/">reply</a> 
         {% else %}
@@ -50,7 +49,9 @@
         <a href="/{{ entry.board }}/{{entry.id}}/">reply</a>
 
         {% endif %}
-	</div>
+</div>
+
+
 	{{ entry.text|markdown }}
     </div>
 </div>
