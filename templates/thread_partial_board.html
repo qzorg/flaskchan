@@ -47,8 +47,10 @@
         {% else %}
 
   <a href="{{ url_for('report') }}?id={{entry.id}}&board={{board}}&thread={{entry.id}}">report</a>
-  <a href="/{{ entry.board }}/{{entry.op_id}}/#{{entry.id}}">reply</a>
-
+  {% if entry.op_id %}<a href="/{{ entry.board }}/{{ entry.op_id }}/#{{ entry.id }}">reply</a>
+  {% else %}<a href="/{{ entry.board }}/{{ entry.id }}/#{{ entry.id }}">reply</a>
+  {% endif %}
+ 
         {% endif %}
 </div>
 
