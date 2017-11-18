@@ -12,6 +12,7 @@ import os, json, re, random
 
 
 
+
 app = Flask(__name__)
 Misaka(app=app, escape    = True,
                 no_images = True,
@@ -39,7 +40,7 @@ def show_frontpage():
     total_ops = sql_get_one(db.engine.execute("SELECT COUNT(*) FROM " + Posts.__tablename__ + " WHERE op_id = 0 AND NOT deleted"))
     images = sql_get_one(db.engine.execute("SELECT COUNT(*) FROM " + Posts.__tablename__ + " WHERE fname IS NOT NULL AND fname != '' AND NOT deleted"))
     boards = db.engine.execute("SELECT name, long_name FROM " + Boards.__tablename__)
-    recent_posts = Posts.query.order_by(Posts.date.desc()).filter(Posts.board != 'lewd').limit(3).all()
+    recent_posts = Posts.query.order_by(Posts.date.desc()).filter(Posts.board != 'lewd').filter(Posts.deleted != 1).limit(3).all()
     popular_threads = get_popular_threads()
     tn_all(recent_posts)
     truncate = lambda x: x[:100] + "..." if len(x) > 100 else x
