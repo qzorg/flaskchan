@@ -1,4 +1,4 @@
-   {% if entry.fname %}
+<!--   {% if entry.fname %}
     <a href="#_" class="lightbox" id="img{{ entry.id }}">
        {% if entry.fname.split('.')[-1] == "webm" %}
 	 <video controls>
@@ -9,7 +9,12 @@
        {% endif %}
     </a>
     <a href="#img{{ entry.id }}" style="border: none;"> <img class=thumb src={{ entry.thumbnail }}></a>
+    {% endif %} -->
+
+{% if entry.fname %}
+    <a href="/static/images/{{ entry.fname }}" target="_blank" style="border: none;"> <img class=thumb src={{ entry.thumbnail }}></a>
     {% endif %}
+
     <div class='post_body' id='{{ entry.id }}'>
 	<div class='byline'>
 	    <span>{{ entry.subject }}</span>
