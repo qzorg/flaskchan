@@ -68,7 +68,29 @@ def get_OPs_catalog(board):
 
 def get_OPs_all():
     return db.session.query(Posts).filter(Posts.board != "lewd").filter_by(op_id = '0'               , deleted = 0).order_by(db.text('last_bump desc')).limit(10)
-
+def get_OPs_page(board, page):
+    page=int(page)
+    renderedp=[]
+    if page==0:
+        
+        firstpost=0
+        lastpost=firstpost+10
+    else:
+        firstpost=(page*10)
+        lastpost=firstpost+10
+    
+   
+    posts = db.session.query(Posts).filter_by(op_id = '0', board = board, deleted = 0).order_by(db.text('last_bump desc')).all()
+    
+    #if lastpost <= len(posts[firstpost:]):
+    if lastpost <= len(posts):
+       return posts[firstpost:lastpost]
+        
+    else:
+      
+        return posts[firstpost:]
+       
+ 
 def get_thread_OP(id):
     return db.session.query(Posts).filter_by(id = id).all()
 

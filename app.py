@@ -67,16 +67,21 @@ def requires_auth(f):
 
 @app.route('/all/')
 def show_all():
-    return show_board("all")
-
+    return show_board("all",0)
 @app.route('/<board>/')
-def show_board(board):
+@app.route('/<board>')
+def show_board_default(board):
+    return redirect('/'+board+'/0/') 
+@app.route('/<board>/<page>/')
+def show_board(board,page):
+    if not page:
+        page = 0
     if board_inexistent(board) and board != "all":
         return redirect('/')
     if board == "all":
         OPs = get_OPs_all()
     else:
-        OPs = get_OPs(board)
+        OPs = get_OPs_page(board,page)
     list = []
     css = getcss()
     for OP in OPs:
@@ -101,7 +106,8 @@ def show_board(board):
     return render_template('show_board.html', entries=list, board=board, sidebar=sidebar, id=0, css=css, json = json, user=user)
 
 
-@app.route('/mod/<board>/')
+
+@app.route('/mod/<board>/<page>/')
 @requires_auth
 def show_board_for_admin(board):
     if board_inexistent(board) and board != "all":
@@ -109,7 +115,7 @@ def show_board_for_admin(board):
     if board == "all":
         OPs = get_OPs_all()
     else:
-        OPs = get_OPs(board)
+        OPs = get_OPs_page(board,page)
     list = []
     css = getcss()
     for OP in OPs:
@@ -187,7 +193,7 @@ def show_catalog(board):
     user = "user"
     return render_template('show_catalog.html', entries=OPs, board=board, sidebar=sidebar, css=css, user=user)
 
-@app.route('/<board>/<id>/')
+@app.route('/<board>/thread/<id>/')
 def show_thread(board, id):
     OP      = get_thread_OP(id)
     print(OP)
@@ -213,7 +219,7 @@ def show_catalog_for_admin(board):
     user = "mod"
     return render_template('show_catalog.html', entries=OPs, board=board, sidebar=sidebar, css=css, user=user)
 
-@app.route('/mod/<board>/<id>/')
+@app.route('/mod/<board>/thread/<id>/')
 @requires_auth
 def show_thread_for_admin(board, id):
     OP      = get_thread_OP(id)
@@ -273,7 +279,7 @@ def delete():
     board   = request.args.get('board')
     thread  = request.args.get('thread')
     return redirect('/' + board + '/' + thread + '/admin')
-@app.route('/<board>/<id>/admin')
+@app.route('/<board>/thread/<id>/admin')
 @requires_auth
 def show_thread_admin(board, id):
     OP      = get_thread_OP(id)

@@ -6,3 +6,5 @@ misaka==1.0.2
 Pillow==3.0.0
 flask-bcrypt
 bcrypt
+Flask-Migrate
+flask_script
