@@ -31,17 +31,17 @@
 		{% if board != 'all' %}
 		
 		{% if entry.op_id %}
-        <a href="{{ entry.op_id }}#{{ entry.id }}">#{{ entry.id }}</a>
+        <a href="/{{ entry.board }}/thread/{{ entry.op_id }}#{{ entry.id }}">#{{ entry.id }}</a>
 		{% else %}
-		    <a href="{{ entry.id }}">#{{ entry.id }}</a>
+        <a href="/{{ entry.board }}/thread/{{ entry.id }}">#{{ entry.id }}</a>
 		{% endif %}
         		{% else %}
 		
         {% if entry.op_id %}
         
-		<a href="/{{ entry.board }}/{{ entry.op_id }}#{{ entry.id }}">#{{ entry.id }}</a>
+		<a href="/{{ entry.board }}/thread/{{ entry.op_id }}#{{ entry.id }}">#{{ entry.id }}</a>
 		{% else %}
-		<a href="/{{ entry.board }}/{{ entry.id }}">#{{ entry.id }}</a>
+		<a href="/{{ entry.board }}/thread/{{ entry.id }}">#{{ entry.id }}</a>
 		{% endif %}
 
         {% endif %}
