@@ -270,7 +270,7 @@ def add_reply():
                flash('You are banned, fuck off')
                return redirect('/' + board + '/')
     db.session.commit()
-    return redirect('/' + board + '/' + thread)
+    return redirect('/' + board + '/thread/' + thread)
 
 @app.route('/del')
 def delete():
