@@ -6,6 +6,7 @@ from models import Boards, Posts, Users, Reports, Rules, Css, Banned
 from app import db
 from datetime import datetime
 from config import *
+import config
 from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy import desc
 from flask import session, redirect, url_for, escape, request
@@ -274,6 +275,15 @@ def unban_ip(id):
 def get_bans():
     bans = db.session.query(Banned).all()
     return bans
+def bump_off_last(board):
+    posts = db.session.query(Posts).filter_by(board=board).filter_by(op_id = 0).count()
+    if posts >= MAX_POSTS:
+        db.session.query(Posts).filter_by(board=board).filter_by(op_id=0).order_by(db.text('last_bump asc')).first().delete()
+        db.session.commit()
+
+ 
+
+# 
 # Run at app start
 try:
     for board in BOARDS:

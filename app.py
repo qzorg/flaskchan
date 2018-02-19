@@ -252,11 +252,12 @@ def new_thread():
     if check_banned(ipaddr):
                flash('You are banned, fuck off')
                return redirect('/' + board + '/')
-
+    
     newPost = new_post(board, ipaddr)
     newPost.last_bump = datetime.now()
     db.session.add(newPost)
     db.session.commit()
+    bump_off_last(board)
     return redirect('/' + board + '/' + "thread/" + str(newPost.id))
 
 @app.route('/add_reply', methods=['POST'])

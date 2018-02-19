@@ -9,3 +9,4 @@ UPLOAD_FOLDER      = 'static/images/'
 THUMBS_FOLDER      = 'static/thumbs/'
 ALLOWED_EXTENSIONS =  set(['png','jpg','jpeg','gif', 'css', 'webm'])
 SITE_NAME = 'whatever'
+MAX_POSTS          = 100
