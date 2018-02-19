@@ -242,6 +242,11 @@ def show_thread_for_admin(board, id):
 def new_thread():
     ipaddr = request.environ['REMOTE_ADDR']
     board = request.form['board']
+    if board_inexistent(board):
+        flash('no such board')
+        return redirect('/' + board + '/')
+
+ 
     if no_image():
         return redirect('/' + board + '/')
     if check_banned(ipaddr):
@@ -252,7 +257,7 @@ def new_thread():
     newPost.last_bump = datetime.now()
     db.session.add(newPost)
     db.session.commit()
-    return redirect('/' + board + '/')
+    return redirect('/' + board + '/' + "thread/" + str(newPost.id))
 
 @app.route('/add_reply', methods=['POST'])
 def add_reply():
