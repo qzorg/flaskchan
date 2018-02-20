@@ -149,51 +149,51 @@ def check_auth(username, password):
     else:
         return False
 def report_post(op_id):
-	post = db.session.query(Posts).filter_by(id = op_id).first()
-	rboard = post.board
-	rdate = datetime.now()
-	if (post.deleted == True):
-		rdeleted = 1
-	else:
-		rdeleted = 0
-	rop  = post.id
-	add_report(rboard, rdate, rdeleted, rop)
+    post = db.session.query(Posts).filter_by(id = op_id).first()
+    rboard = post.board
+    rdate = datetime.now()
+    if (post.deleted == True):
+        rdeleted = 1
+    else:
+        rdeleted = 0
+    rop  = post.id
+    add_report(rboard, rdate, rdeleted, rop)
 
 def add_report(rboard, rdate, rdeleted, rop):
-	#newRep = db.session.query(Reports).filter_by(id=id).one()
-	print(rboard)
-	print(rdate)
-	print(rdeleted)
-	print(rop)
-	newRep = Reports(board   = rboard,
-		rdate    = rdate,
-		deleted = rdeleted,
-		op_id   = rop,
-		)
-	db.session.add(newRep)
-	db.session.commit()
+    #newRep = db.session.query(Reports).filter_by(id=id).one()
+    print(rboard)
+    print(rdate)
+    print(rdeleted)
+    print(rop)
+    newRep = Reports(board   = rboard,
+        rdate    = rdate,
+        deleted = rdeleted,
+        op_id   = rop,
+        )
+    db.session.add(newRep)
+    db.session.commit()
 
 def get_reports():
     return db.session.query(Reports).all()
 
 def usercreate(name, password):
-	pw_hash = generate_password_hash(password)
-	user = Users(username=name, pw_hash=pw_hash)
-	db.session.add(user)
-	db.session.commit()
+    pw_hash = generate_password_hash(password)
+    user = Users(username=name, pw_hash=pw_hash)
+    db.session.add(user)
+    db.session.commit()
 def setrules(rules):
 
-	db.session.query(Rules).delete()
-	db.session.commit()
+    db.session.query(Rules).delete()
+    db.session.commit()
 
-	for line in rules.splitlines():
-		edited = datetime.now()
-		newRules = Rules(rules=line, edited = edited)
-		db.session.add(newRules)
-		db.session.commit()
+    for line in rules.splitlines():
+        edited = datetime.now()
+        newRules = Rules(rules=line, edited = edited)
+        db.session.add(newRules)
+        db.session.commit()
 
 def getrules():
-	return db.session.query(Rules).all()
+    return db.session.query(Rules).all()
 
 
 
@@ -204,22 +204,22 @@ def redirect_url(default='index'):
 
 def getcss():
     if session.get('css') is not None:
-		css = session['css']
-		print css
+        css = session['css']
+        print css
     else:
         css = "style.css"
     return css
 
 def setcss(css):
-	edited = datetime.now()
-	newCss = Css(css=css, edited = edited)
-	db.session.add(newCss)
-	db.session.commit()
+    edited = datetime.now()
+    newCss = Css(css=css, edited = edited)
+    db.session.add(newCss)
+    db.session.commit()
 
 def getcsslist():
-	return db.session.query(Css).all()
+    return db.session.query(Css).all()
 def get_users():
-	return db.session.query(Users).all()
+    return db.session.query(Users).all()
 def delete_user(killuser):
     if (killuser == "1"):
         flash('can\'t delete root user')
@@ -253,12 +253,12 @@ def thumbnail(fname):
     return "/static/thumbs/" + fname
 def tn_all(l):
     for x in l:
-	x.thumbnail = thumbnail(x.fname)
+        x.thumbnail = thumbnail(x.fname)
 
 
 def check_banned(ipaddr):
     if db.session.query(Banned).filter_by(ip=ipaddr).all():
-	return True
+        return True
     else:
         return False
 
@@ -281,19 +281,24 @@ def bump_off_last(board):
         db.session.query(Posts).filter_by(board=board).filter_by(op_id=0).order_by(db.text('last_bump asc')).first().delete()
         db.session.commit()
 
- 
+def first_run_check():
+    if db.session.query(Users).all():
+        return False
+    else:
+        return True
 
 # 
 # Run at app start
 try:
+    
     for board in BOARDS:
-	if Boards.query.filter_by(name = board).first() is None:
-	    b = Boards()
-	    b.name = board
-	    b.long_name = board
-	    b.description = board
-	    b.hidden = False
-	    db.session.add(b)
+        if Boards.query.filter_by(name = board).first() is None:
+            b = Boards()
+            b.name = board
+            b.long_name = board
+            b.description = board
+            b.hidden = False
+            db.session.add(b)
 except:
     pass
 db.session.commit()

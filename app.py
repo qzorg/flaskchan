@@ -34,18 +34,21 @@ db.session.commit()
 
 @app.route('/')
 def show_frontpage():
-    site_name = SITE_NAME
-    css = getcss()
-    total_posts = sql_get_one(db.engine.execute("SELECT COUNT(*) FROM " + Posts.__tablename__ + " WHERE NOT deleted"))
-    total_ops = sql_get_one(db.engine.execute("SELECT COUNT(*) FROM " + Posts.__tablename__ + " WHERE op_id = 0 AND NOT deleted"))
-    images = sql_get_one(db.engine.execute("SELECT COUNT(*) FROM " + Posts.__tablename__ + " WHERE fname IS NOT NULL AND fname != '' AND NOT deleted"))
-    boards = db.engine.execute("SELECT name, long_name FROM " + Boards.__tablename__)
-    recent_posts = Posts.query.order_by(Posts.date.desc()).filter(Posts.board != 'lewd').filter(Posts.deleted != 1).limit(3).all()
-    popular_threads = get_popular_threads()
-    tn_all(recent_posts)
-    truncate = lambda x: x[:100] + "..." if len(x) > 100 else x
-    # Can't get unique posters, we don't record IP addresses
-    return render_template('home.html', css=css, total_posts = total_posts, total_ops = total_ops, images = images, boards = boards, recent_posts = recent_posts, render_template = render_template, json = json, popular_threads = popular_threads, truncate = truncate, re = re, site_name = site_name)
+    if not first_run_check():
+        site_name = SITE_NAME
+        css = getcss()
+        total_posts = sql_get_one(db.engine.execute("SELECT COUNT(*) FROM " + Posts.__tablename__ + " WHERE NOT deleted"))
+        total_ops = sql_get_one(db.engine.execute("SELECT COUNT(*) FROM " + Posts.__tablename__ + " WHERE op_id = 0 AND NOT deleted"))
+        images = sql_get_one(db.engine.execute("SELECT COUNT(*) FROM " + Posts.__tablename__ + " WHERE fname IS NOT NULL AND fname != '' AND NOT deleted"))
+        boards = db.engine.execute("SELECT name, long_name FROM " + Boards.__tablename__)
+        recent_posts = Posts.query.order_by(Posts.date.desc()).filter(Posts.board != 'lewd').filter(Posts.deleted != 1).limit(3).all()
+        popular_threads = get_popular_threads()
+        tn_all(recent_posts)
+        truncate = lambda x: x[:100] + "..." if len(x) > 100 else x
+        # Can't get unique posters, we don't record IP addresses
+        return render_template('home.html', css=css, total_posts = total_posts, total_ops = total_ops, images = images, boards = boards, recent_posts = recent_posts, render_template = render_template, json = json, popular_threads = popular_threads, truncate = truncate, re = re, site_name = site_name)
+    else:
+        return redirect(url_for("setup"))
 @app.route('/login', methods=['GET', 'POST'])
 
 def authenticate():
@@ -464,8 +467,31 @@ def unban(variable):
    ip=str(variable)
    unban_ip(ip)
    return redirect("/mod/bans")
+@app.route('/setup', methods=['GET','POST'])
+def setup():
+    if first_run_check():
+        if request.method == 'POST':
+                if not request.form['name'] or not request.form['password1'] or not request.form['password2']:
+                    flash('Please enter all the fields', 'error')
+                else:
+                    name = request.form['name']
+                    password1 = request.form['password1']
+                    password2 = request.form['password2']
+                    if (password1 == password2):
+                        password = password1
+                        usercreate(name, password)
+                        flash('Record was successfully added')
+                        return redirect("/")
+
+
+                    else:
+                        flash('Passwords must match')
+
+        return render_template("adduser.html", css=getcss())
+    else: return("site already configured")
 
 if __name__ == '__main__':
     print(' * Running on http://localhost:5000/ (Press Ctrl-C to quit)')
     print(' * Database is', SQLALCHEMY_DATABASE_URI)
     app.run(host='0.0.0.0')
+

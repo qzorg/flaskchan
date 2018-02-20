@@ -1,4 +1,4 @@
-Imageboard Software written in Flask. Designed to have very little JS, and should be able to operate with none at all. GPL-3.0+
+Imageboard Software written in Flask. Designed to have very little JS, and should be able to operate with none at all. Created by qzo, find him on IRC somewhere, probably Rizon. GPL-3.0+
 
 ## Creating a Dev Environment
 
@@ -8,9 +8,9 @@ Imageboard Software written in Flask. Designed to have very little JS, and shoul
 
 - sudo yum install python python-devel python-pip libtiff-devel libjpeg-devel libzip-devel freetype-devel lcms2-devel libwebp-devel tcl-devel tk-devel
 2. pip install -r requirements.txt
-3. python app.py
-4. Default mod: (user / test)
-5. Use the mod panel to change the default user (user) password. This is your root "recovery" user and it should have a strong and memorable password.
+3. Edit config.py with your variables _before_ you continue.
+4. On the first run, you will be prompted with a panel to configure the primary user.
+5. python app.py
 
 ## Deploying on Apache wsgi
 
@@ -20,4 +20,5 @@ Imageboard Software written in Flask. Designed to have very little JS, and shoul
 4. Edit the Deploy/devchan.conf and replace all lines that start with $ with your own information. Copy the devchan.conf file to your /etc/apache2/sites-enabled/.
 5. pip install -r requirements.txt.
 6. Edit config.py to include direct paths to directories such as static/images/, static/thumbs, and the sqlite database.
-6. service apache2 reload.
+7. Perform steps 3 and 4 from "Creating a Dev Environment."
+8. service apache2 reload.
