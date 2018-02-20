@@ -2,7 +2,7 @@ Imageboard Software written in Flask. Designed to have very little JS, and shoul
 
 ## Creating a Dev Environment
 
-
+#On your OS
 1. Install the dependancies for your distro
 - sudo apt-get install libjpeg-dev zlib1g-dev python python-dev python-pip libtiff5-dev libjpeg62-turbo-dev zlib1g-dev libfreetype6-dev liblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python-tk
 
@@ -11,6 +11,10 @@ Imageboard Software written in Flask. Designed to have very little JS, and shoul
 3. Edit config.py with your variables _before_ you continue.
 4. On the first run, you will be prompted with a panel to configure the primary user.
 5. python app.py
+#In a docker image
+1. docker build -t flaskchan-image .
+2. docker run -d -p 5000:5000 flaskchan-image
+wowee that is simple
 
 ## Deploying on Apache wsgi
 
