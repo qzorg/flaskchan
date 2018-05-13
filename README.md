@@ -7,6 +7,9 @@ Imageboard Software written in Flask. Designed to have very little JS, and shoul
 - sudo apt-get install libjpeg-dev zlib1g-dev python python-dev python-pip libtiff5-dev libjpeg62-turbo-dev zlib1g-dev libfreetype6-dev liblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python-tk
 
 - sudo yum install python python-devel python-pip libtiff-devel libjpeg-devel libzip-devel freetype-devel lcms2-devel libwebp-devel tcl-devel tk-devel
+
+- apk add python py-pip python-dev gcc git libffi-dev linux-header musl-dev zlib-dev libjpeg-turbo-dev
+
 2. pip install -r requirements.txt
 3. Edit config.py with your variables _before_ you continue.
 4. On the first run, you will be prompted with a panel to configure the primary user.
