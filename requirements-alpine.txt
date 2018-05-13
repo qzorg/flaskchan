@@ -1,0 +1,6 @@
+Flask==0.10.1
+Flask-Migrate
+flask_script
+Flask-SQLAlchemy
+Flask-Misaka
+Flask-bcrypt
