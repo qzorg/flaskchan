@@ -3,12 +3,12 @@
 * WebM Lightbox behaviour refinement
 * Random header image
   * Submit header images
-* Pagination/Ajax load
+* Pagination/Ajax load *WONTFIX*
 * Theme changer from git repository
 * Multi-File posts (probably going to require decent rewrite?)
 * Threads/posts must be aligned left to make room for the post/reply box on smaller screens
 * General phoneposter optimizations
-  * Support for phoneposter imageboard apps?
+  * Support for phoneposter imageboard apps? *WONTFIX*
 * Make a posting style-guide for non-default markdown formatting effects
 * Make the rules window on /all/ toggle like the floating posting and reply boxes do (should be simple)
 
