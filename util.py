@@ -13,6 +13,12 @@ from flask import session, redirect, url_for, escape, request
 from PIL import ImageFile
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 
+def check_op_exists(thread):
+    print thread
+    if db.session.query(Posts).filter_by(id = thread).all():
+        return True
+    return False
+
 def board_inexistent(name):
     if name not in BOARDS:
         flash('board ' + name + ' does not exist')

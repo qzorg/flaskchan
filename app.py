@@ -270,6 +270,9 @@ def add_reply():
     thread = request.form['op_id']
     if no_content_or_image():
         return redirect('/' + board + '/')
+    if check_op_exists(thread) == False:
+        flash('No such OP')
+        return redirect('/' + board + '/')
 
     newPost = new_post(board, ipaddr, thread)
     db.session.add(newPost)
