@@ -13,6 +13,14 @@ from flask import session, redirect, url_for, escape, request
 from PIL import ImageFile
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 
+def file_oversized():
+    file = request.files['file']
+    file.seek(0, 2)
+    file_length = file.tell()
+    if file_length > MAX_FILE:
+        flash("file too large")
+        return True
+    return False
 def check_op_exists(thread):
     print thread
     if db.session.query(Posts).filter_by(id = thread).all():

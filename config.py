@@ -10,3 +10,4 @@ THUMBS_FOLDER      = 'static/thumbs/'
 ALLOWED_EXTENSIONS =  set(['png','jpg','jpeg','gif', 'css', 'webm'])
 SITE_NAME = 'whatever'
 MAX_POSTS          = 100
+MAX_FILE           = 5000000 #max file size in bytes

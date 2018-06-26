@@ -248,14 +248,16 @@ def new_thread():
     if board_inexistent(board):
         flash('no such board')
         return redirect('/' + board + '/')
+    if check_banned(ipaddr):
+        flash('You are banned, fuck off')
+        return redirect('/' + board + '/')
+    
 
- 
     if no_image():
         return redirect('/' + board + '/')
-    if check_banned(ipaddr):
-               flash('You are banned, fuck off')
-               return redirect('/' + board + '/')
-    
+    if file_oversized():
+        return redirect('/' + board + '/')
+
     newPost = new_post(board, ipaddr)
     newPost.last_bump = datetime.now()
     db.session.add(newPost)
@@ -269,6 +271,8 @@ def add_reply():
     board  = request.form['board']
     thread = request.form['op_id']
     if no_content_or_image():
+        return redirect('/' + board + '/')
+    if file_oversized():
         return redirect('/' + board + '/')
     if check_op_exists(thread) == False:
         flash('No such OP')
