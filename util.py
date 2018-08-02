@@ -18,8 +18,8 @@ def file_oversized():
     file.seek(0, 2)
     file_length = file.tell()
     if file_length > MAX_FILE:
-        flash("file too large")
-        return True
+        flash("file too large") 
+        return True 
     return False
 def check_op_exists(thread):
     print thread
@@ -34,6 +34,7 @@ def board_inexistent(name):
 
 def upload_file():
     file = request.files['file']
+    file.seek(0,0)
     fname = ''
     if file and allowed_file(file.filename):
         # Save file as <timestamp>.<extension>
