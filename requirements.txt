@@ -3,7 +3,7 @@ Flask-Misaka==0.3.0
 Flask-SQLAlchemy==2.1
 sqlalchemy==1.1.9
 misaka==1.0.2
-Pillow==3.0.0
+Pillow
 flask-bcrypt
 bcrypt
 Flask-Migrate
